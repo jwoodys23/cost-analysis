@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
@@ -38,6 +40,14 @@ public class FormPanel extends JPanel {
 
         // Buttons
         okBtn = new JButton("Add Part");
+
+        okBtn.addActionListener(e -> {
+            String partName = partNameField.getText();
+            String partNumber = partNumberField.getText();
+            String materialCost = materialCostField.getText();
+            String laborCost = laborCostField.getText();
+
+        });
 
 
         Border innerBorder = BorderFactory.createTitledBorder("Add New Part");
