@@ -1,5 +1,7 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -14,6 +16,7 @@ public class MainFrame extends JFrame {
     private ToolBar toolBar;
     private FormPanel formPanel;
     private JFileChooser fileChooser;
+    private Controller controller;
 
 
     public MainFrame(){
@@ -25,6 +28,9 @@ public class MainFrame extends JFrame {
         textPanel = new TextPanel();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
+
+        controller = new Controller();
+
         fileChooser = new JFileChooser();
 
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Inventory Database Files (*.inv)", "inv"));
@@ -35,13 +41,7 @@ public class MainFrame extends JFrame {
         toolBar.setStringListener(text -> textPanel.appendText(text));
 
         formPanel.setFormListener(e -> {
-            String partName = e.getPartName();
-            String partNumber = e.getPartNumber();
-            String materialCost = e.getMaterialCost();
-            String laborCost = e.getLaborCost();
-            String freightCost = e.getFreightCost();
-
-            textPanel.appendText(partName + ": " + partNumber + ": " + materialCost + ": " + laborCost + freightCost +"\n");
+            controller.addPart(e);
 
         });
 
