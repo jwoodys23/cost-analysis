@@ -8,18 +8,28 @@ public class FormEvent extends EventObject{
     private String partNumber;
     private String materialCost;
     private String laborCost;
+    private String freightCost;
 
     public FormEvent(Object source){
         super(source);
     }
 
-    public FormEvent(Object source, String partName, String partNumber, String materialCost, String laborCost){
+    public FormEvent(Object source, String partName, String partNumber, String materialCost, String laborCost, String freightCost){
         super(source);
 
         this.partName = partName;
         this.partNumber = partNumber;
         this.materialCost = materialCost;
         this.laborCost = laborCost;
+        this.freightCost = freightCost;
+    }
+
+    public String getFreightCost() {
+        return freightCost;
+    }
+
+    public void setFreightCost(String freightCost) {
+        this.freightCost = freightCost;
     }
 
     public String getPartName() {

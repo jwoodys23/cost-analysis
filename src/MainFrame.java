@@ -27,8 +27,9 @@ public class MainFrame extends JFrame {
             String partNumber = e.getPartNumber();
             String materialCost = e.getMaterialCost();
             String laborCost = e.getLaborCost();
+            String freightCost = e.getFreightCost();
 
-            textPanel.appendText(partName + ": " + partNumber + ": " + materialCost + ": " + laborCost + "\n");
+            textPanel.appendText(partName + ": " + partNumber + ": " + materialCost + ": " + laborCost + freightCost +"\n");
 
         });
 
