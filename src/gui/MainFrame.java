@@ -1,7 +1,8 @@
+package gui;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 /**
@@ -59,8 +60,8 @@ public class MainFrame extends JFrame {
 
         // File Menu
         JMenu fileMenu = new JMenu("File");
-        JMenuItem exportDataItem = new JMenuItem("Export Data...");
-        JMenuItem importDataItem = new JMenuItem("Import Data...");
+        JMenuItem exportDataItem = new JMenuItem("Open");
+        JMenuItem importDataItem = new JMenuItem("Save");
         JMenuItem exitItem = new JMenuItem("Exit");
         fileMenu.add(exportDataItem);
         fileMenu.add(importDataItem);

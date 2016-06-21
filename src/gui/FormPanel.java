@@ -1,8 +1,8 @@
+package gui;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
