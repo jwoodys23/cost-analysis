@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,8 @@ public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private ToolBar toolBar;
     private FormPanel formPanel;
+    private JFileChooser fileChooser;
+
 
     public MainFrame(){
 
@@ -21,6 +24,10 @@ public class MainFrame extends JFrame {
         textPanel = new TextPanel();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
+        fileChooser = new JFileChooser();
+
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Inventory Database Files (*.inv)", "inv"));
+        fileChooser.setAcceptAllFileFilterUsed(true);
 
         setJMenuBar(createMenuBar());
 
@@ -42,6 +49,7 @@ public class MainFrame extends JFrame {
         add(textPanel, BorderLayout.CENTER);
 
         setSize(900, 600);
+        setMinimumSize(new Dimension(500,400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -82,6 +90,20 @@ public class MainFrame extends JFrame {
             formPanel.setVisible(menuItem.isSelected());
         });
 
+        importDataItem.addActionListener(e -> {
+            if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
+                System.out.println(fileChooser.getSelectedFile());
+            }
+
+        });
+
+        exportDataItem.addActionListener(e -> {
+            if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
+                System.out.println(fileChooser.getSelectedFile());
+            }
+
+        });
+
         //Mnemonics
         fileMenu.setMnemonic(KeyEvent.VK_F);
         exitItem.setMnemonic(KeyEvent.VK_X);
@@ -91,7 +113,11 @@ public class MainFrame extends JFrame {
 
         //Close Application when exit menu item is clicked
         exitItem.addActionListener(e -> {
-            System.exit(0);
+            int action = JOptionPane.showConfirmDialog(MainFrame.this, "Are you sure you want to exit?", "Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
+            if (action == JOptionPane.OK_OPTION){
+                System.exit(0);
+            }
+
         });
 
         return menuBar;
