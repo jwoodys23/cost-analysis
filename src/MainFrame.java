@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
@@ -60,17 +62,37 @@ public class MainFrame extends JFrame {
         // Window Menu
         JMenu windowMenu = new JMenu("Window");
 
-        // Show Menu
-        JMenu showMenu = new JMenu("Show");
-        JMenuItem showFormItem = new JMenuItem("Part Form");
-        showMenu.add(showFormItem);
+        // View Menu
+        JMenu viewMenu = new JMenu("View");
+        JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Part Form");
+        showFormItem.setSelected(true);
+
+        viewMenu.add(showFormItem);
 
         //Add show menu to window menu
-        windowMenu.add(showMenu);
+        windowMenu.add(viewMenu);
 
         //Add main menu items
         menuBar.add(fileMenu);
         menuBar.add(windowMenu);
+
+        //Action Listeners
+        showFormItem.addActionListener(e -> {
+            JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) e.getSource();
+            formPanel.setVisible(menuItem.isSelected());
+        });
+
+        //Mnemonics
+        fileMenu.setMnemonic(KeyEvent.VK_F);
+        exitItem.setMnemonic(KeyEvent.VK_X);
+
+        //Accelerators
+        exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+
+        //Close Application when exit menu item is clicked
+        exitItem.addActionListener(e -> {
+            System.exit(0);
+        });
 
         return menuBar;
     }

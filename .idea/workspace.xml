@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e7c6673-4bd5-4971-88b9-8e1c4ecb2920" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/costAnalysis/MainFrame.class" afterPath="$PROJECT_DIR$/out/production/costAnalysis/MainFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainFrame.java" afterPath="$PROJECT_DIR$/src/MainFrame.java" />
     </list>
@@ -29,8 +30,20 @@
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="89" column="64" selection-start-line="89" selection-start-column="64" selection-end-line="89" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToolBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ToolBar.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="366">
-              <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -562,7 +575,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466347573401</updated>
-      <workItem from="1466347574644" duration="13787000" />
+      <workItem from="1466347574644" duration="15445000" />
     </task>
     <task id="LOCAL-00001" summary="Begin adding labels and textfield">
       <created>1466373216029</created>
@@ -613,11 +626,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466474280006</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Menus and Menu Items">
+      <created>1466476472121</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1466476472121</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13787000" />
+    <option name="totallyTimeSpent" value="15445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="792" extended-state="6" />
@@ -659,7 +679,8 @@
     <MESSAGE value="Add FormEvent class&#10;" />
     <MESSAGE value="Connected form submissions to panel" />
     <MESSAGE value="Added Freight Cost option to panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Freight Cost option to panel" />
+    <MESSAGE value="Added Menus and Menu Items" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Menus and Menu Items" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -691,18 +712,6 @@
         <state relative-caret-position="90">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ToolBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,10 +775,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/ToolBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="89" column="64" selection-start-line="89" selection-start-column="64" selection-end-line="89" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
