@@ -22,6 +22,16 @@ public class MainFrame extends JFrame {
 
         toolBar.setStringListener(text -> textPanel.appendText(text));
 
+        formPanel.setFormListener(e -> {
+            String partName = e.getPartName();
+            String partNumber = e.getPartNumber();
+            String materialCost = e.getMaterialCost();
+            String laborCost = e.getLaborCost();
+
+            textPanel.appendText(partName + ": " + partNumber + ": " + materialCost + ": " + laborCost + "\n");
+
+        });
+
         add(formPanel, BorderLayout.WEST);
         add(toolBar, BorderLayout.NORTH);
         add(textPanel, BorderLayout.CENTER);

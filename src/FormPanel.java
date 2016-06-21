@@ -19,6 +19,7 @@ public class FormPanel extends JPanel {
     private JTextField materialCostField;
     private JTextField laborCostField;
     private JButton okBtn;
+    private FormListener formListener;
 
 
     public FormPanel() {
@@ -46,6 +47,11 @@ public class FormPanel extends JPanel {
             String partNumber = partNumberField.getText();
             String materialCost = materialCostField.getText();
             String laborCost = laborCostField.getText();
+
+            FormEvent ev = new FormEvent(this, partName, partNumber,materialCost,laborCost);
+            if (formListener!=null){
+                formListener.formEventOccurred(ev);
+            }
 
         });
 
@@ -133,6 +139,10 @@ public class FormPanel extends JPanel {
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0,0,0,0);
         add(okBtn, gc);
+
+    }
+    public void setFormListener(FormListener listener){
+        this.formListener = listener;
 
     }
 }
