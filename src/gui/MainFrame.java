@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
@@ -17,6 +18,7 @@ public class MainFrame extends JFrame {
     private FormPanel formPanel;
     private JFileChooser fileChooser;
     private Controller controller;
+    private TablePanel tablePanel;
 
 
     public MainFrame(){
@@ -28,8 +30,10 @@ public class MainFrame extends JFrame {
         textPanel = new TextPanel();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
+        tablePanel = new TablePanel();
 
         controller = new Controller();
+        tablePanel.setData(controller.getPart());
 
         fileChooser = new JFileChooser();
 
@@ -42,12 +46,13 @@ public class MainFrame extends JFrame {
 
         formPanel.setFormListener(e -> {
             controller.addPart(e);
+            tablePanel.refresh();
 
         });
 
         add(formPanel, BorderLayout.WEST);
         add(toolBar, BorderLayout.NORTH);
-        add(textPanel, BorderLayout.CENTER);
+        add(tablePanel, BorderLayout.CENTER);
 
         setSize(900, 600);
         setMinimumSize(new Dimension(500,400));
@@ -93,16 +98,26 @@ public class MainFrame extends JFrame {
 
         importDataItem.addActionListener(e -> {
             if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
-                System.out.println(fileChooser.getSelectedFile());
+                try {
+                    controller.loadFromFile(fileChooser.getSelectedFile());
+                    tablePanel.refresh();
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Could not load data from file", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
 
         });
 
         exportDataItem.addActionListener(e -> {
             if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
-                System.out.println(fileChooser.getSelectedFile());
-            }
+                try {
+                    controller.saveToFile(fileChooser.getSelectedFile());
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Could not save data to file", "Error", JOptionPane.ERROR_MESSAGE);
+                }
 
+            }
         });
 
         //Mnemonics
