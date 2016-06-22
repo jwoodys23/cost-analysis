@@ -65,8 +65,8 @@ public class MainFrame extends JFrame {
 
         // File Menu
         JMenu fileMenu = new JMenu("File");
-        JMenuItem exportDataItem = new JMenuItem("Open");
-        JMenuItem importDataItem = new JMenuItem("Save");
+        JMenuItem exportDataItem = new JMenuItem("Save");
+        JMenuItem importDataItem = new JMenuItem("Open");
         JMenuItem exitItem = new JMenuItem("Exit");
         fileMenu.add(exportDataItem);
         fileMenu.add(importDataItem);
@@ -99,10 +99,10 @@ public class MainFrame extends JFrame {
         importDataItem.addActionListener(e -> {
             if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
                 try {
-                    controller.saveToFile(fileChooser.getSelectedFile());
+                    controller.loadFromFile(fileChooser.getSelectedFile());
                     tablePanel.refresh();
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(MainFrame.this, "Could not save data to file", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(MainFrame.this, "Could not load data from file", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -112,9 +112,9 @@ public class MainFrame extends JFrame {
         exportDataItem.addActionListener(e -> {
             if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
                 try {
-                    controller.loadFromFile(fileChooser.getSelectedFile());
+                    controller.saveToFile(fileChooser.getSelectedFile());
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(MainFrame.this, "Could not load data from file", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(MainFrame.this, "Could not save data to file", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
