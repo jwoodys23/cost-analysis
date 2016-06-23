@@ -19,6 +19,7 @@ public class MainFrame extends JFrame {
     private JFileChooser fileChooser;
     private Controller controller;
     private TablePanel tablePanel;
+    private PrefsDialog prefsDialog;
 
 
     public MainFrame(){
@@ -33,6 +34,9 @@ public class MainFrame extends JFrame {
         tablePanel = new TablePanel();
 
         controller = new Controller();
+
+        prefsDialog = new PrefsDialog(this);
+
         tablePanel.setData(controller.getPart());
 
         tablePanel.setPartTableListener(new PartTableListener(){
@@ -86,10 +90,12 @@ public class MainFrame extends JFrame {
 
         // View Menu
         JMenu viewMenu = new JMenu("View");
+        JMenuItem prefs = new JMenuItem("Preferences...");
         JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Part Form");
         showFormItem.setSelected(true);
 
         viewMenu.add(showFormItem);
+        viewMenu.add(prefs);
 
         //Add show menu to window menu
         windowMenu.add(viewMenu);
@@ -99,6 +105,10 @@ public class MainFrame extends JFrame {
         menuBar.add(windowMenu);
 
         //Action Listeners
+
+        prefs.addActionListener(e ->
+            prefsDialog.setVisible(true)
+        );
         showFormItem.addActionListener(e -> {
             JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) e.getSource();
             formPanel.setVisible(menuItem.isSelected());
