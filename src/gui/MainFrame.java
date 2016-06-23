@@ -7,6 +7,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
@@ -20,6 +21,8 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private TablePanel tablePanel;
     private PrefsDialog prefsDialog;
+    private Preferences prefs;
+
 
 
     public MainFrame(){
@@ -33,19 +36,27 @@ public class MainFrame extends JFrame {
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
 
+        prefs = Preferences.userRoot().node("db");
+
         controller = new Controller();
 
         prefsDialog = new PrefsDialog(this);
 
         tablePanel.setData(controller.getPart());
 
-        tablePanel.setPartTableListener(new PartTableListener(){
-           public void rowDeleted(int row){
-               controller.removePart(row);
-           }
+        tablePanel.setPartTableListener(row -> controller.removePart(row));
+
+        prefsDialog.setPrefsListener((user, password, port) -> {
+            prefs.put("user", user);
+            prefs.put("password", password);
+            prefs.putInt("port", port);
         });
 
+        String user = prefs.get("user", "");
+        String password = prefs.get("password", "");
+        Integer port = prefs.getInt("port", 3306);
 
+        prefsDialog.setDefault(user, password, port);
 
         fileChooser = new JFileChooser();
 
