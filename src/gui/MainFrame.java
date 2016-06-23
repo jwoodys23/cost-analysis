@@ -35,6 +35,14 @@ public class MainFrame extends JFrame {
         controller = new Controller();
         tablePanel.setData(controller.getPart());
 
+        tablePanel.setPartTableListener(new PartTableListener(){
+           public void rowDeleted(int row){
+               controller.removePart(row);
+           }
+        });
+
+
+
         fileChooser = new JFileChooser();
 
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Inventory Database Files (*.inv)", "inv"));

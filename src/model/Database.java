@@ -1,26 +1,28 @@
 package model;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by jourdanwoodrich on 6/21/16.
  */
 public class Database {
-    private ArrayList<Part> parts;
+    private List<Part> parts;
 
     public Database(){
-        parts = new ArrayList<>();
+        parts = new LinkedList<>();
     }
 
     public void addPart(Part part){
         parts.add(part);
     }
 
+    public void removePart(int row){
+        parts.remove(row);
+    }
+
     public List<Part> getPart(){
-        return parts;
+        return Collections.unmodifiableList(parts);
     }
 
     public void saveToFile (File file) throws IOException{

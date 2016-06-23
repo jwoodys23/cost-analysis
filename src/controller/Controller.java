@@ -30,6 +30,9 @@ public class Controller {
         db.addPart(part);
 
     }
+    public void removePart(int index){
+        db.removePart(index);
+    }
 
     public void saveToFile(File file) throws IOException{
         db.saveToFile(file);

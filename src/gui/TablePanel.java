@@ -4,7 +4,8 @@ import model.Part;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 /**
@@ -14,11 +15,39 @@ public class TablePanel extends JPanel {
 
     private JTable table;
     private PartTableModel tableModel;
+    private JPopupMenu popupMenu;
+    private PartTableListener partTableListener;
 
     public TablePanel(){
 
         tableModel = new PartTableModel();
         table = new JTable(tableModel);
+        popupMenu = new JPopupMenu();
+
+        JMenuItem removeItem = new JMenuItem("Delete Row");
+        popupMenu.add(removeItem);
+
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int row = table.rowAtPoint(e.getPoint());
+
+                table.getSelectionModel().setSelectionInterval(row, row);
+
+                if (e.getButton() == MouseEvent.BUTTON3){
+                    popupMenu.show(table, e.getX(), e.getY());
+                }
+            }
+        });
+
+        removeItem.addActionListener(e -> {
+            int row = table.getSelectedRow();
+
+            if (partTableListener != null){
+                partTableListener.rowDeleted(row);
+                tableModel.fireTableRowsDeleted(row, row);
+            }
+        });
 
         setLayout(new BorderLayout());
         add(new JScrollPane(table), BorderLayout.CENTER);
@@ -30,5 +59,10 @@ public class TablePanel extends JPanel {
 
     public void refresh(){
         tableModel.fireTableDataChanged();
+    }
+
+    public void setPartTableListener(PartTableListener listener){
+        this.partTableListener = listener;
+
     }
 }
