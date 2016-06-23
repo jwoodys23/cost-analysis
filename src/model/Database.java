@@ -1,6 +1,9 @@
 package model;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -8,9 +11,34 @@ import java.util.*;
  */
 public class Database {
     private List<Part> parts;
+    private Connection con;
 
     public Database(){
         parts = new LinkedList<>();
+    }
+
+    public void connect() throws Exception {
+
+        if (con!=null) return;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new Exception("Driver not found");
+        }
+
+        String url = "jdbc:mysql://localhost:3306/swingtest?autoReconnect=true&useSSL=false";
+        con = DriverManager.getConnection(url, "root", "password");
+        System.out.println("Connected: " + con);
+    }
+
+    public void disconnect(){
+        if (con!=null){
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println("Can't close connection");
+            }
+        }
     }
 
     public void addPart(Part part){
