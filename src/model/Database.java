@@ -97,6 +97,34 @@ public class Database {
         checkStmt.close();
     }
 
+    public void load() throws SQLException {
+        parts.clear();
+
+        Statement selectStmt = con.createStatement();
+        String sql = "SELECT id, part_name, part_number, material_cost, labor_cost, freight_cost FROM parts ORDER BY part_name";
+        ResultSet results = selectStmt.executeQuery(sql);
+
+        while (results.next()){
+            int id = results.getInt("id");
+            String name = results.getString("part_name");
+            String number = results.getString("part_number");
+            String material = results.getString("material_cost");
+            String labor = results.getString("labor_cost");
+            String freight = results.getString("freight_cost");
+
+            Part part = new Part(id, name, number, material, labor, freight);
+
+            parts.add(part);
+
+            System.out.println(part);
+
+        }
+
+        results.close();
+        selectStmt.close();
+
+    }
+
     public void addPart(Part part){
         parts.add(part);
     }

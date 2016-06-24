@@ -26,6 +26,11 @@ public class Part implements Serializable{
         count++;
     }
 
+    public Part (int id, String partName, String partNumber, String materialCost, String laborCost, String freightCost){
+        this(partName, partNumber, materialCost, laborCost, freightCost);
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -68,6 +73,10 @@ public class Part implements Serializable{
 
     public String getFreightCost() {
         return freightCost;
+    }
+
+    public String toString(){
+        return id + " " + partName;
     }
 
     public void setFreightCost(String freightCost) {
