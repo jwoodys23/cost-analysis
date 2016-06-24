@@ -9,39 +9,39 @@ import java.awt.event.ActionListener;
  * Created by jourdanwoodrich on 6/19/16.
  */
 public class ToolBar extends JPanel implements ActionListener{
-    private JButton helloBtn;
-    private JButton goodbyeBtn;
-    private StringListener textListener;
+    private JButton saveBtn;
+    private JButton refreshBtn;
+    private ToolbarListener textListener;
 
     public ToolBar(){
 
         setBorder(BorderFactory.createEtchedBorder());
-        helloBtn = new JButton("Hello");
-        goodbyeBtn = new JButton("Goodbye");
+        saveBtn = new JButton("Save");
+        refreshBtn = new JButton("Refresh");
 
-        helloBtn.addActionListener(this);
-        goodbyeBtn.addActionListener(this);
+        saveBtn.addActionListener(this);
+        refreshBtn.addActionListener(this);
 
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        add(helloBtn);
-        add(goodbyeBtn);
+        add(saveBtn);
+        add(refreshBtn);
     }
 
-    public void setStringListener(StringListener listener){
+    public void setToolbarListener(ToolbarListener listener){
         this.textListener = listener;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton clicked = (JButton) e.getSource();
-        if (clicked==helloBtn){
+        if (clicked==saveBtn){
             if (textListener!=null){
-                textListener.textEmitted("Hello\n");
+                textListener.saveEventOccurred();
             }
-        } else if (clicked==goodbyeBtn){
+        } else if (clicked==refreshBtn){
             if (textListener!=null){
-                textListener.textEmitted("Goodbye\n");
+                textListener.refreshEventOccurred();
             }
         }
     }

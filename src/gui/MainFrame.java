@@ -7,6 +7,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.prefs.Preferences;
 
 /**
@@ -65,7 +66,34 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(createMenuBar());
 
-        toolBar.setStringListener(text -> textPanel.appendText(text));
+        toolBar.setToolbarListener(new ToolbarListener() {
+            @Override
+            public void saveEventOccurred() {
+                connect();
+                try {
+                    controller.connect();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Cannot connect to database", "Database Connection problem", JOptionPane.ERROR_MESSAGE);
+                }
+                try {
+                    controller.save();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Unable to save to database", "Database Connection problem", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            @Override
+            public void refreshEventOccurred() {
+                connect();
+                try {
+                    controller.load();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Unable to load from database", "Database Connection problem", JOptionPane.ERROR_MESSAGE);
+
+                }
+                tablePanel.refresh();
+            }
+        });
 
         formPanel.setFormListener(e -> {
             controller.addPart(e);
@@ -83,6 +111,13 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
+    private void connect(){
+        try {
+            controller.connect();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainFrame.this, "Cannot connect to database", "Database Connection problem", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     private JMenuBar createMenuBar(){
         JMenuBar menuBar = new JMenuBar();
 

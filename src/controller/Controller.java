@@ -6,6 +6,7 @@ import model.Part;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -40,5 +41,21 @@ public class Controller {
 
     public void loadFromFile(File file) throws IOException {
         db.loadFromFile(file);
+    }
+
+    public void save() throws SQLException {
+        db.save();
+    }
+
+    public void disconnect(){
+        db.disconnect();
+    }
+
+    public void connect() throws Exception {
+        db.connect();
+    }
+
+    public void load() throws SQLException {
+        db.load();
     }
 }
