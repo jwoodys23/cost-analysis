@@ -26,7 +26,7 @@ public class MainFrame extends JFrame {
     private TablePanel tablePanel;
     private PrefsDialog prefsDialog;
     private Preferences prefs;
-
+    private JTabbedPane tabbedPane;
 
 
     public MainFrame(){
@@ -39,6 +39,10 @@ public class MainFrame extends JFrame {
         toolBar = new ToolBar();
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
+        tabbedPane = new JTabbedPane();
+
+        tabbedPane.addTab("Parts Database", tablePanel);
+        tabbedPane.addTab("Report", textPanel);
 
         prefs = Preferences.userRoot().node("db");
 
@@ -114,8 +118,8 @@ public class MainFrame extends JFrame {
         });
 
         add(formPanel, BorderLayout.WEST);
-        add(toolBar, BorderLayout.NORTH);
-        add(tablePanel, BorderLayout.CENTER);
+        add(toolBar, BorderLayout.PAGE_START);
+        add(tabbedPane, BorderLayout.CENTER);
 
         setSize(900, 600);
         setMinimumSize(new Dimension(500,400));
