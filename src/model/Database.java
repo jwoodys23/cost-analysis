@@ -48,6 +48,10 @@ public class Database {
         String insertSql = "insert into parts (id, part_name, part_number, material_cost, labor_cost, freight_cost) values(?, ?, ?, ?, ?, ?)";
         PreparedStatement insertStmt = con.prepareStatement(insertSql);
 
+        String updateSql = "update parts set part_name=?, part_number=?, material_cost=?, labor_cost=?, freight_cost=? where id=?";
+        PreparedStatement updateStmt = con.prepareStatement(updateSql);
+
+
         for (Part part: parts){
             int id = part.getId();
             String name = part.getPartName();
@@ -74,9 +78,21 @@ public class Database {
 
             } else {
                 System.out.println("Updating Person with id: " + id);
+
+                int col = 1;
+                updateStmt.setString(col++, name);
+                updateStmt.setString(col++, number);
+                updateStmt.setString(col++, material);
+                updateStmt.setString(col++, labor);
+                updateStmt.setString(col++, freight);
+                updateStmt.setInt(col++, id);
+
+                updateStmt.executeUpdate();
+
             }
 
         }
+        updateStmt.close();
         insertStmt.close();
         checkStmt.close();
     }

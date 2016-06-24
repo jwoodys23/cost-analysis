@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e7c6673-4bd5-4971-88b9-8e1c4ecb2920" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Database.java" afterPath="$PROJECT_DIR$/src/model/Database.java" />
     </list>
@@ -57,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDatabase.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestDatabase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="73" selection-start-line="20" selection-start-column="73" selection-end-line="20" selection-end-column="73" />
+            <state relative-caret-position="285">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,18 +67,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-96">
-              <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
+            <state relative-caret-position="294">
+              <caret line="85" column="51" selection-start-line="85" selection-start-column="51" selection-end-line="85" selection-end-column="51" />
               <folding>
-                <element signature="e#2595#2596#0" expanded="true" />
-                <element signature="e#2626#2627#0" expanded="true" />
-                <element signature="e#2664#2665#0" expanded="true" />
-                <element signature="e#2697#2698#0" expanded="true" />
-                <marker date="1466732044000" expanded="true" signature="1048:1094" ph="Select count... " />
-                <marker date="1466732044000" expanded="true" signature="1197:1309" ph="insert into parts... " />
+                <element signature="e#3200#3201#0" expanded="true" />
+                <element signature="e#3231#3232#0" expanded="true" />
+                <element signature="e#3269#3270#0" expanded="true" />
+                <element signature="e#3302#3303#0" expanded="true" />
+                <marker date="1466732854000" expanded="true" signature="1048:1094" ph="Select count... " />
+                <marker date="1466732854000" expanded="true" signature="1197:1309" ph="insert into parts... " />
+                <marker date="1466732854000" expanded="true" signature="1413:1514" ph="update parts... " />
               </folding>
             </state>
           </provider>
@@ -136,9 +135,9 @@
         <option value="$PROJECT_DIR$/src/gui/PrefsListener.java" />
         <option value="$PROJECT_DIR$/src/gui/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/PrefsDialog.java" />
-        <option value="$PROJECT_DIR$/src/TestDatabase.java" />
         <option value="$PROJECT_DIR$/src/model/Part.java" />
         <option value="$PROJECT_DIR$/src/model/Database.java" />
+        <option value="$PROJECT_DIR$/src/TestDatabase.java" />
       </list>
     </option>
   </component>
@@ -732,7 +731,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466347573401</updated>
-      <workItem from="1466347574644" duration="36854000" />
+      <workItem from="1466347574644" duration="37365000" />
     </task>
     <task id="LOCAL-00001" summary="Begin adding labels and textfield">
       <created>1466373216029</created>
@@ -888,11 +887,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466726836713</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added saving to database">
+      <created>1466732176613</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1466732176613</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36854000" />
+    <option name="totallyTimeSpent" value="37365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-28" y="23" width="1468" height="792" extended-state="0" />
@@ -957,7 +963,8 @@
     <MESSAGE value="Finished PrefsDialog design and functionality" />
     <MESSAGE value="Added jdbc driver for database" />
     <MESSAGE value="more database stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="more database stuff" />
+    <MESSAGE value="Added saving to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added saving to database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1126,27 +1133,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="73" selection-start-line="20" selection-start-column="73" selection-end-line="20" selection-end-column="73" />
+        <state relative-caret-position="294">
+          <caret line="85" column="51" selection-start-line="85" selection-start-column="51" selection-end-line="85" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3200#3201#0" expanded="true" />
+            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#3269#3270#0" expanded="true" />
+            <element signature="e#3302#3303#0" expanded="true" />
+            <marker date="1466732854000" expanded="true" signature="1048:1094" ph="Select count... " />
+            <marker date="1466732854000" expanded="true" signature="1197:1309" ph="insert into parts... " />
+            <marker date="1466732854000" expanded="true" signature="1413:1514" ph="update parts... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/TestDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
+        <state relative-caret-position="285">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
           <folding>
-            <element signature="e#2595#2596#0" expanded="true" />
-            <element signature="e#2626#2627#0" expanded="true" />
-            <element signature="e#2664#2665#0" expanded="true" />
-            <element signature="e#2697#2698#0" expanded="true" />
-            <marker date="1466732044000" expanded="true" signature="1048:1094" ph="Select count... " />
-            <marker date="1466732044000" expanded="true" signature="1197:1309" ph="insert into parts... " />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
