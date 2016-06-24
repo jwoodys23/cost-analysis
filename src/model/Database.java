@@ -41,20 +41,43 @@ public class Database {
 
     public void save() throws SQLException{
 
-        String checkSql = "Select count(*) as count from swingtest.parts where id=?";
+        String checkSql = "Select count(*) as count from parts where id=?";
 
         PreparedStatement checkStmt = con.prepareStatement(checkSql);
+
+        String insertSql = "insert into parts (id, part_name, part_number, material_cost, labor_cost, freight_cost) values(?, ?, ?, ?, ?, ?)";
+        PreparedStatement insertStmt = con.prepareStatement(insertSql);
+
         for (Part part: parts){
             int id = part.getId();
+            String name = part.getPartName();
+            String number = part.getPartNumber();
+            String material = part.getMaterialCost();
+            String labor = part.getLaborCost();
+            String freight = part.getFreightCost();
 
             checkStmt.setInt(1, id);
             ResultSet checkResult = checkStmt.executeQuery();
             checkResult.next();
             int count = checkResult.getInt(1);
-            System.out.println("Count for person with id: " + id + " is " + count);
+            if (count == 0){
+                System.out.println("Inserting Person with id: " + id);
+                int col = 1;
+                insertStmt.setInt(col++, id);
+                insertStmt.setString(col++, name);
+                insertStmt.setString(col++, number);
+                insertStmt.setString(col++, material);
+                insertStmt.setString(col++, labor);
+                insertStmt.setString(col++, freight);
 
+                insertStmt.executeUpdate();
+
+            } else {
+                System.out.println("Updating Person with id: " + id);
+            }
 
         }
+        insertStmt.close();
         checkStmt.close();
     }
 
