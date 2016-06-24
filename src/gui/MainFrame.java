@@ -1,6 +1,8 @@
 package gui;
 
+import apple.laf.JRSUIUtils;
 import controller.Controller;
+import javafx.event.ActionEvent;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -40,9 +42,17 @@ public class MainFrame extends JFrame {
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
         tabbedPane = new JTabbedPane();
+        tablePanel.setName("Parts Database");
+        textPanel.setName("Report");
 
-        tabbedPane.addTab("Parts Database", tablePanel);
-        tabbedPane.addTab("Report", textPanel);
+        tabbedPane.addTab(tablePanel.getName(), tablePanel);
+        tabbedPane.addTab(textPanel.getName(), textPanel);
+
+        tabbedPane.addChangeListener(e -> {
+
+            tabChanged();
+           // System.out.println("tabbed changed");
+        });
 
         prefs = Preferences.userRoot().node("db");
 
@@ -108,6 +118,8 @@ public class MainFrame extends JFrame {
 
         });
 
+        //tabbedPane;
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -126,6 +138,19 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
     }
+
+    private void tabChanged(){
+
+        Component tab = tabbedPane.getSelectedComponent();
+        String name = tab.getName();
+        if (name == "Report"){
+            formPanel.setVisible(false);
+        } else {
+            formPanel.setVisible(true);
+        }
+    }
+
+
 
     private void connect(){
         try {
@@ -199,6 +224,8 @@ public class MainFrame extends JFrame {
 
             }
         });
+
+
 
         //Mnemonics
         fileMenu.setMnemonic(KeyEvent.VK_F);
