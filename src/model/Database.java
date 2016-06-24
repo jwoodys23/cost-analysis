@@ -1,9 +1,7 @@
 package model;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -39,6 +37,25 @@ public class Database {
                 System.out.println("Can't close connection");
             }
         }
+    }
+
+    public void save() throws SQLException{
+
+        String checkSql = "Select count(*) as count from swingtest.parts where id=?";
+
+        PreparedStatement checkStmt = con.prepareStatement(checkSql);
+        for (Part part: parts){
+            int id = part.getId();
+
+            checkStmt.setInt(1, id);
+            ResultSet checkResult = checkStmt.executeQuery();
+            checkResult.next();
+            int count = checkResult.getInt(1);
+            System.out.println("Count for person with id: " + id + " is " + count);
+
+
+        }
+        checkStmt.close();
     }
 
     public void addPart(Part part){

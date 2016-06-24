@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Part implements Serializable{
 
-    private static int count = 0;
+    private static int count = 1;
 
     private int id;
     private String partName;
