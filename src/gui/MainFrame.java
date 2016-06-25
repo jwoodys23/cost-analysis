@@ -1,8 +1,6 @@
 package gui;
 
-import apple.laf.JRSUIUtils;
 import controller.Controller;
-import javafx.event.ActionEvent;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,7 +18,7 @@ import java.util.prefs.Preferences;
  */
 public class MainFrame extends JFrame {
 
-    private TextPanel textPanel;
+    private ResultPanel textPanel;
     private ToolBar toolBar;
     private FormPanel formPanel;
     private JFileChooser fileChooser;
@@ -37,7 +35,7 @@ public class MainFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        textPanel = new TextPanel();
+        textPanel = new ResultPanel();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
