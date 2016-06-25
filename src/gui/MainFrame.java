@@ -45,14 +45,12 @@ public class MainFrame extends JFrame {
         tablePanel.setName("Parts Database");
         textPanel.setName("Report");
 
-        tabbedPane.addTab(tablePanel.getName(), tablePanel);
-        tabbedPane.addTab(textPanel.getName(), textPanel);
+        tabbedPane.addTab("Parts Database", tablePanel);
+        tabbedPane.addTab("Report", textPanel);
 
-        tabbedPane.addChangeListener(e -> {
+        tabbedPane.addChangeListener(e -> tabChanged());
 
-            tabChanged();
-           // System.out.println("tabbed changed");
-        });
+
 
         prefs = Preferences.userRoot().node("db");
 
