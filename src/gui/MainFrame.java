@@ -27,6 +27,7 @@ public class MainFrame extends JFrame {
     private PrefsDialog prefsDialog;
     private Preferences prefs;
     private JTabbedPane tabbedPane;
+    private ResultDialog resultDialog;
 
 
     public MainFrame(){
@@ -40,6 +41,7 @@ public class MainFrame extends JFrame {
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
         tabbedPane = new JTabbedPane();
+        resultDialog = new ResultDialog(this);
         tablePanel.setName("Parts Database");
         textPanel.setName("Report");
 
@@ -142,6 +144,7 @@ public class MainFrame extends JFrame {
         if (name == "Report"){
             formPanel.setVisible(false);
         } else {
+            System.out.println(name);
             formPanel.setVisible(true);
         }
     }
@@ -174,11 +177,13 @@ public class MainFrame extends JFrame {
         // View Menu
         JMenu viewMenu = new JMenu("View");
         JMenuItem prefs = new JMenuItem("Preferences...");
+        JMenuItem settings = new JMenuItem("Settings...");
         JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Part Form");
         showFormItem.setSelected(true);
 
         viewMenu.add(showFormItem);
         viewMenu.add(prefs);
+        viewMenu.add(settings);
 
         //Add show menu to window menu
         windowMenu.add(viewMenu);
@@ -192,9 +197,15 @@ public class MainFrame extends JFrame {
         prefs.addActionListener(e ->
             prefsDialog.setVisible(true)
         );
+
+        settings.addActionListener(e ->
+                resultDialog.setVisible(true)
+        );
+
         showFormItem.addActionListener(e -> {
             JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) e.getSource();
             formPanel.setVisible(menuItem.isSelected());
+
         });
 
         importDataItem.addActionListener(e -> {

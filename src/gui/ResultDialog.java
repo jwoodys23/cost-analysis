@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Created by jourdanwoodrich on 6/25/16.
  */
-public class ResultForm extends JPanel{
+public class ResultDialog extends JDialog{
 
     private JLabel stdLaborRate;
     private JLabel stdLaborHrs;
@@ -21,10 +21,14 @@ public class ResultForm extends JPanel{
     private JTextField stdLaborHrsInput;
     private JButton saveBtn;
 
-    public ResultForm(){
+    public ResultDialog(JFrame parent){
+        super(parent, "Settings", false);
+        setSize(320, 230);
+        setLocationRelativeTo(parent);
 
-        Border border = BorderFactory.createLineBorder(Color.black);
-        setBorder(border);
+        Border innerBorder = BorderFactory.createTitledBorder("Add New Part");
+        Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);
+        //setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
         Dimension dim = getPreferredSize();
         dim.width = 275;

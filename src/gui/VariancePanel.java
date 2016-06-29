@@ -31,8 +31,6 @@ public class VariancePanel extends JPanel {
     private JLabel laborVariance;
 
     public VariancePanel(){
-        //JPanel = new JPanel();
-        JPanel graphPanel = new JPanel();
 
         Border border = BorderFactory.createLineBorder(Color.black);
         setBorder(border);

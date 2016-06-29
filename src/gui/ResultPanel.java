@@ -11,16 +11,16 @@ public class ResultPanel extends JPanel {
 
 
     public ResultPanel(){
-        Border border = BorderFactory.createLineBorder(Color.black);
-        setBorder(border);
+        //Border border = BorderFactory.createLineBorder(Color.black);
+        //setBorder(border);
 
-        ResultForm resultForm = new ResultForm();
+        //ResultDialog resultForm = new ResultDialog();
 
         VariancePanel variancePanel = new VariancePanel();
         //GraphPanel graphPanel = new GraphPanel();
 
         setLayout(new BorderLayout());
-        add(resultForm, BorderLayout.WEST);
+        //add(resultForm, BorderLayout.WEST);
         add(variancePanel,BorderLayout.CENTER);
 
 
