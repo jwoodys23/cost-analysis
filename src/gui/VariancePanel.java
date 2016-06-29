@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -32,6 +33,9 @@ public class VariancePanel extends JPanel {
     public VariancePanel(){
         //JPanel = new JPanel();
         JPanel graphPanel = new JPanel();
+
+        Border border = BorderFactory.createLineBorder(Color.black);
+        setBorder(border);
 
         //String filler = "filler";
 

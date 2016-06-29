@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -10,6 +11,8 @@ public class ResultPanel extends JPanel {
 
 
     public ResultPanel(){
+        Border border = BorderFactory.createLineBorder(Color.black);
+        setBorder(border);
 
         ResultForm resultForm = new ResultForm();
 
