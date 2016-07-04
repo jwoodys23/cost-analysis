@@ -1,8 +1,11 @@
 package controller;
 
 import gui.FormEvent;
+import gui.SettingEvent;
 import model.Database;
 import model.Part;
+import model.Settings;
+import model.Variables;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +19,33 @@ public class Controller {
 
     Database db = new Database();
 
+
     public List<Part> getPart(){
         return db.getPart();
     }
+
+    public List<Variables> getVariables(){
+        return db.getVariables();
+    }
+
+    public void addSettings(SettingEvent e){
+        String laborRate = e.getLaborRate();
+        String laborHrs = e.getLaborHrs();
+        String overtimeRate = e.getOvertimeRate();
+        String sellingPrice = e.getSellingPrice();
+
+        Variables variables = new Variables(laborRate,laborHrs, overtimeRate, sellingPrice);
+        System.out.println(variables.getLaborHrs());
+    }
+    public void setSettings (){
+//        double laborRate = settings.getLaborRate();
+//        double laborHrs = settings.getLaborHrs();
+//        double overtimeRate = settings.getOvertimeRate();
+//        double sellingPrice = settings.getSellingPrice();
+//        Settings settings = new Settings(laborRate, laborHrs);
+        System.out.println("Set Settings was called");
+    }
+
 
     public void addPart(FormEvent e){
         String partName = e.getPartName();

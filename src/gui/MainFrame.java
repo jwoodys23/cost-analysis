@@ -116,6 +116,11 @@ public class MainFrame extends JFrame {
 
         });
 
+        resultDialog.setSettingListener(e -> {
+            controller.addSettings(e);
+            //System.out.println("Test");
+        });
+
         //tabbedPane;
 
         addWindowListener(new WindowAdapter() {

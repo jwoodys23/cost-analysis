@@ -9,10 +9,12 @@ import java.util.*;
  */
 public class Database {
     private List<Part> parts;
+    private List<Variables> variables;
     private Connection con;
 
     public Database(){
         parts = new LinkedList<>();
+        variables = new LinkedList<>();
     }
 
     public void connect() throws Exception {
@@ -135,6 +137,10 @@ public class Database {
 
     public List<Part> getPart(){
         return Collections.unmodifiableList(parts);
+    }
+
+    public List<Variables> getVariables(){
+        return Collections.unmodifiableList(variables);
     }
 
     public void saveToFile (File file) throws IOException{

@@ -1,8 +1,11 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.geom.Arc2D;
 
 /**
  * Created by jourdanwoodrich on 6/25/16.
@@ -20,6 +23,7 @@ public class ResultDialog extends JDialog{
     private JTextField stdLaborInput;
     private JTextField stdLaborHrsInput;
     private JButton saveBtn;
+    private SettingListener settingListener;
 
     public ResultDialog(JFrame parent){
         super(parent, "Settings", false);
@@ -120,6 +124,24 @@ public class ResultDialog extends JDialog{
 
 
 
+        saveBtn.addActionListener(e -> {
+            String laborRate = stdLaborInput.getText();
+            String laborHrs = stdLaborHrsInput.getText();
+            String overheadRate = stdOverheadRate.getText();
+            String sellingPrice = sellingInput.getText();
+
+            SettingEvent event = new SettingEvent(this, laborRate, laborHrs, overheadRate, sellingPrice);
+            if (settingListener!=null){
+                settingListener.settingEventOccurred(event);
+            }
+           // controller.addSettings();
+            System.out.println("Settings saved");
+        });
+
+
+    }
+    public void setSettingListener(SettingListener listener){
+        this.settingListener = listener;
 
     }
 }
