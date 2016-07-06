@@ -24,9 +24,6 @@ public class Controller {
         return db.getPart();
     }
 
-    public List<Variables> getVariables(){
-        return db.getVariables();
-    }
 
     public void addSettings(SettingEvent e){
         String laborRate = e.getLaborRate();
@@ -35,15 +32,10 @@ public class Controller {
         String sellingPrice = e.getSellingPrice();
 
         Variables variables = new Variables(laborRate,laborHrs, overtimeRate, sellingPrice);
-        System.out.println(variables.getLaborHrs());
-    }
-    public void setSettings (){
-//        double laborRate = settings.getLaborRate();
-//        double laborHrs = settings.getLaborHrs();
-//        double overtimeRate = settings.getOvertimeRate();
-//        double sellingPrice = settings.getSellingPrice();
-//        Settings settings = new Settings(laborRate, laborHrs);
-        System.out.println("Set Settings was called");
+
+        //Added only so that the variables are also in the Database class to keep mvc structure
+        db.setVariables(laborRate,laborHrs, overtimeRate, sellingPrice);
+         System.out.println(variables.getLaborHrs());
     }
 
 

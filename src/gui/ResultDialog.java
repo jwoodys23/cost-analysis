@@ -134,7 +134,6 @@ public class ResultDialog extends JDialog{
             if (settingListener!=null){
                 settingListener.settingEventOccurred(event);
             }
-           // controller.addSettings();
             System.out.println("Settings saved");
         });
 

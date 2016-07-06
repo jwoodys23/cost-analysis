@@ -1,8 +1,13 @@
 package gui;
 
+import controller.Controller;
+import model.Variables;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.List;
+import java.util.*;
 
 /**
  * Created by jourdanwoodrich on 6/26/16.
@@ -30,12 +35,17 @@ public class VariancePanel extends JPanel {
     private JLabel materialVariance;
     private JLabel laborVariance;
 
+    private Controller controller;
+
     public VariancePanel(){
+
+        controller = new Controller();
 
         Border border = BorderFactory.createLineBorder(Color.black);
         setBorder(border);
 
         //String filler = "filler";
+        //List<> test = controller.getVariables();
 
         stdCost = new JLabel("Standard Cost");
         actualCost = new JLabel("Actual Cost");
@@ -45,7 +55,7 @@ public class VariancePanel extends JPanel {
         materialActual = new JLabel("Actual material cost");
         materialVariance = new JLabel("total material var");
         laborLabel = new JLabel("Labor Variance");
-        laborActual = new JLabel("Actual Labor cost");
+        laborActual = new JLabel();
         laborStd = new JLabel("Std Labor Cost");
         laborVariance = new JLabel("total labor var");
 

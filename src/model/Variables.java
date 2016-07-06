@@ -10,22 +10,15 @@ public class Variables {
     private String overtimeRate;
     private String sellingPrice;
 
+    public Variables(){
+
+    }
+
     public Variables(String laborRate, String laborHrs, String overtimeRate, String sellingPrice){
         this.laborRate = laborRate;
         this.laborHrs = laborHrs;
         this.overtimeRate = overtimeRate;
         this.sellingPrice = sellingPrice;
-    }
-    public Variables(int id, String laborRate, String laborHrs, String overtimeRate, String sellingPrice){
-        this.laborRate = laborRate;
-        this.laborHrs = laborHrs;
-        this.overtimeRate = overtimeRate;
-        this.sellingPrice = sellingPrice;
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void setId(int id) {

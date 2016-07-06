@@ -9,12 +9,20 @@ import java.util.*;
  */
 public class Database {
     private List<Part> parts;
-    private List<Variables> variables;
+    private Variables variables;
+    private String stdLaborHrs;
+    private String actualLaborHrs;
+    private String overheadRate;
+    private String sellingPrice;
+
+    //private double
+    //private List<Variables> variables;
     private Connection con;
 
     public Database(){
         parts = new LinkedList<>();
-        variables = new LinkedList<>();
+        variables = new Variables();
+       // variables = new LinkedList<>();
     }
 
     public void connect() throws Exception {
@@ -131,6 +139,17 @@ public class Database {
         parts.add(part);
     }
 
+    public void setVariables(String laborRate, String laborHrs, String overtimeRate, String sellingPrice){
+        variables.setLaborRate(laborRate);
+        variables.setLaborHrs(laborHrs);
+        variables.setOvertimeRate(overtimeRate);
+        variables.setSellingPrice(sellingPrice);
+    }
+
+//    public void addSettings(Variables variable){
+//        variables.add(variable);
+//    }
+
     public void removePart(int row){
         parts.remove(row);
     }
@@ -139,9 +158,9 @@ public class Database {
         return Collections.unmodifiableList(parts);
     }
 
-    public List<Variables> getVariables(){
-        return Collections.unmodifiableList(variables);
-    }
+//    public List<Variables> getVariables(){
+//        return Collections.unmodifiableList(variables);
+//    }
 
     public void saveToFile (File file) throws IOException{
         FileOutputStream fos = new FileOutputStream(file);
