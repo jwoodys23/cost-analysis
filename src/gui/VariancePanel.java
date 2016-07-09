@@ -34,18 +34,20 @@ public class VariancePanel extends JPanel {
     private JLabel totalActual;
     private JLabel materialVariance;
     private JLabel laborVariance;
+    private Variables variables;
 
-    private Controller controller;
 
     public VariancePanel(){
 
-        controller = new Controller();
+       // controller = new Controller();
+        variables = new Variables();
 
         Border border = BorderFactory.createLineBorder(Color.black);
         setBorder(border);
 
         //String filler = "filler";
-        //List<> test = controller.getVariables();
+        double test = variables.getLaborHrs();
+        System.out.println("variance test: " + test);
 
         stdCost = new JLabel("Standard Cost");
         actualCost = new JLabel("Actual Cost");
@@ -55,9 +57,12 @@ public class VariancePanel extends JPanel {
         materialActual = new JLabel("Actual material cost");
         materialVariance = new JLabel("total material var");
         laborLabel = new JLabel("Labor Variance");
-        laborActual = new JLabel();
+        laborActual = new JLabel("Labor hours");
         laborStd = new JLabel("Std Labor Cost");
         laborVariance = new JLabel("total labor var");
+
+        //laborActual.setText(Double.toString(test));
+
 
 
         setLayout(new GridBagLayout());
@@ -119,10 +124,8 @@ public class VariancePanel extends JPanel {
         gc.gridx = 3;
         add(laborVariance, gc);
 
-        /// add Subpanels to dialog////
-        //setLayout(new BorderLayout());
-        //add( BorderLayout.CENTER);
-        //add(graphPanel, BorderLayout.SOUTH);
+
 
     }
+
 }

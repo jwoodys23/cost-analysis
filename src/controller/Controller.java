@@ -2,9 +2,9 @@ package controller;
 
 import gui.FormEvent;
 import gui.SettingEvent;
+import gui.VariancePanel;
 import model.Database;
 import model.Part;
-import model.Settings;
 import model.Variables;
 
 import java.io.File;
@@ -18,6 +18,7 @@ import java.util.List;
 public class Controller {
 
     Database db = new Database();
+    VariancePanel variancePanel = new VariancePanel();
 
 
     public List<Part> getPart(){
@@ -26,16 +27,17 @@ public class Controller {
 
 
     public void addSettings(SettingEvent e){
-        String laborRate = e.getLaborRate();
-        String laborHrs = e.getLaborHrs();
-        String overtimeRate = e.getOvertimeRate();
-        String sellingPrice = e.getSellingPrice();
+        double laborRate = e.getLaborRate();
+        double laborHrs = e.getLaborHrs();
+        double overtimeRate = e.getOvertimeRate();
+        double sellingPrice = e.getSellingPrice();
+        variancePanel.revalidate();
+        variancePanel.repaint();
 
-        Variables variables = new Variables(laborRate,laborHrs, overtimeRate, sellingPrice);
+        //Variables variables = new Variables(laborRate,laborHrs, overtimeRate, sellingPrice);
 
         //Added only so that the variables are also in the Database class to keep mvc structure
         db.setVariables(laborRate,laborHrs, overtimeRate, sellingPrice);
-         System.out.println(variables.getLaborHrs());
     }
 
 

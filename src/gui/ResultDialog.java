@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import model.Variables;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -23,12 +24,18 @@ public class ResultDialog extends JDialog{
     private JTextField stdLaborInput;
     private JTextField stdLaborHrsInput;
     private JButton saveBtn;
+    private VariancePanel panel;
     private SettingListener settingListener;
+    private Variables variables;
+    private Controller controller;
 
     public ResultDialog(JFrame parent){
         super(parent, "Settings", false);
+        variables = new Variables();
+        panel = new VariancePanel();
         setSize(320, 230);
         setLocationRelativeTo(parent);
+        controller = new Controller();
 
         Border innerBorder = BorderFactory.createTitledBorder("Add New Part");
         Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);
@@ -125,16 +132,19 @@ public class ResultDialog extends JDialog{
 
 
         saveBtn.addActionListener(e -> {
-            String laborRate = stdLaborInput.getText();
-            String laborHrs = stdLaborHrsInput.getText();
-            String overheadRate = stdOverheadRate.getText();
-            String sellingPrice = sellingInput.getText();
+            double laborRate = Double.parseDouble(stdLaborInput.getText());
+            double laborHrs = Double.parseDouble(stdLaborHrsInput.getText());
+            double overheadRate = Double.parseDouble(overheadRateInput.getText());
+            double sellingPrice = Double.parseDouble(sellingInput.getText());
 
             SettingEvent event = new SettingEvent(this, laborRate, laborHrs, overheadRate, sellingPrice);
             if (settingListener!=null){
                 settingListener.settingEventOccurred(event);
             }
-            System.out.println("Settings saved");
+            controller.addSettings(event);
+            setVisible(false);
+           // System.out.println(variables.getLaborHrs());
+//
         });
 
 

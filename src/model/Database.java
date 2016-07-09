@@ -139,16 +139,14 @@ public class Database {
         parts.add(part);
     }
 
-    public void setVariables(String laborRate, String laborHrs, String overtimeRate, String sellingPrice){
+    public void setVariables(double laborRate, double laborHrs, double overtimeRate, double sellingPrice){
         variables.setLaborRate(laborRate);
         variables.setLaborHrs(laborHrs);
         variables.setOvertimeRate(overtimeRate);
         variables.setSellingPrice(sellingPrice);
+        System.out.println("Variables set");
     }
 
-//    public void addSettings(Variables variable){
-//        variables.add(variable);
-//    }
 
     public void removePart(int row){
         parts.remove(row);

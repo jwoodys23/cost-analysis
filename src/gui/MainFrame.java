@@ -118,6 +118,8 @@ public class MainFrame extends JFrame {
 
         resultDialog.setSettingListener(e -> {
             controller.addSettings(e);
+            textPanel.revalidate();
+            textPanel.repaint();
             //System.out.println("Test");
         });
 

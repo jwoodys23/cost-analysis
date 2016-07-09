@@ -5,16 +5,16 @@ package model;
  */
 public class Variables {
     private int id;
-    private String laborRate;
-    private String laborHrs;
-    private String overtimeRate;
-    private String sellingPrice;
+    private double laborRate;
+    private double laborHrs;
+    private double overtimeRate;
+    private double sellingPrice;
 
     public Variables(){
 
     }
 
-    public Variables(String laborRate, String laborHrs, String overtimeRate, String sellingPrice){
+    public Variables(double laborRate, double laborHrs, double overtimeRate, double sellingPrice){
         this.laborRate = laborRate;
         this.laborHrs = laborHrs;
         this.overtimeRate = overtimeRate;
@@ -25,35 +25,35 @@ public class Variables {
         this.id = id;
     }
 
-    public String getLaborRate() {
+    public double getLaborRate() {
         return laborRate;
     }
 
-    public void setLaborRate(String laborRate) {
+    public void setLaborRate(double laborRate) {
         this.laborRate = laborRate;
     }
 
-    public String getLaborHrs() {
+    public double getLaborHrs() {
         return laborHrs;
     }
 
-    public void setLaborHrs(String laborHrs) {
+    public void setLaborHrs(double laborHrs) {
         this.laborHrs = laborHrs;
     }
 
-    public String getOvertimeRate() {
+    public double getOvertimeRate() {
         return overtimeRate;
     }
 
-    public void setOvertimeRate(String overtimeRate) {
+    public void setOvertimeRate(double overtimeRate) {
         this.overtimeRate = overtimeRate;
     }
 
-    public String getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(String sellingPrice) {
+    public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 }

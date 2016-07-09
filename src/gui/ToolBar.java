@@ -30,8 +30,10 @@ public class ToolBar extends JToolBar implements ActionListener{
         refreshBtn.addActionListener(this);
 
 
+
         add(saveBtn);
         add(refreshBtn);
+
     }
 
     private ImageIcon createIcon(String path){
