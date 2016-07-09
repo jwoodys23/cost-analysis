@@ -31,8 +31,8 @@ public class Controller {
         double laborHrs = e.getLaborHrs();
         double overtimeRate = e.getOvertimeRate();
         double sellingPrice = e.getSellingPrice();
-        variancePanel.revalidate();
-        variancePanel.repaint();
+//        variancePanel.revalidate();
+//        variancePanel.repaint();
 
         //Variables variables = new Variables(laborRate,laborHrs, overtimeRate, sellingPrice);
 

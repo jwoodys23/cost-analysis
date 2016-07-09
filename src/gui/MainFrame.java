@@ -185,12 +185,14 @@ public class MainFrame extends JFrame {
         JMenu viewMenu = new JMenu("View");
         JMenuItem prefs = new JMenuItem("Preferences...");
         JMenuItem settings = new JMenuItem("Settings...");
+        JMenuItem report = new JMenuItem("Report");
         JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Part Form");
         showFormItem.setSelected(true);
 
         viewMenu.add(showFormItem);
         viewMenu.add(prefs);
         viewMenu.add(settings);
+        viewMenu.add(report);
 
         //Add show menu to window menu
         windowMenu.add(viewMenu);
@@ -198,6 +200,10 @@ public class MainFrame extends JFrame {
         //Add main menu items
         menuBar.add(fileMenu);
         menuBar.add(windowMenu);
+
+        report.addActionListener(e -> {
+            new Report();
+        });
 
         //Action Listeners
 
