@@ -1,6 +1,7 @@
 package model;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
@@ -66,9 +67,9 @@ public class Database {
             int id = part.getId();
             String name = part.getPartName();
             String number = part.getPartNumber();
-            String material = part.getMaterialCost();
-            String labor = part.getLaborCost();
-            String freight = part.getFreightCost();
+            BigDecimal material = part.getMaterialCost();
+            BigDecimal labor = part.getLaborCost();
+            BigDecimal freight = part.getFreightCost();
 
             checkStmt.setInt(1, id);
             ResultSet checkResult = checkStmt.executeQuery();
@@ -80,9 +81,9 @@ public class Database {
                 insertStmt.setInt(col++, id);
                 insertStmt.setString(col++, name);
                 insertStmt.setString(col++, number);
-                insertStmt.setString(col++, material);
-                insertStmt.setString(col++, labor);
-                insertStmt.setString(col++, freight);
+                insertStmt.setBigDecimal(col++, material);
+                insertStmt.setBigDecimal(col++, labor);
+                insertStmt.setBigDecimal(col++, freight);
 
                 insertStmt.executeUpdate();
 
@@ -92,9 +93,9 @@ public class Database {
                 int col = 1;
                 updateStmt.setString(col++, name);
                 updateStmt.setString(col++, number);
-                updateStmt.setString(col++, material);
-                updateStmt.setString(col++, labor);
-                updateStmt.setString(col++, freight);
+                updateStmt.setBigDecimal(col++, material);
+                updateStmt.setBigDecimal(col++, labor);
+                updateStmt.setBigDecimal(col++, freight);
                 updateStmt.setInt(col++, id);
 
                 updateStmt.executeUpdate();
@@ -118,9 +119,9 @@ public class Database {
             int id = results.getInt("id");
             String name = results.getString("part_name");
             String number = results.getString("part_number");
-            String material = results.getString("material_cost");
-            String labor = results.getString("labor_cost");
-            String freight = results.getString("freight_cost");
+            BigDecimal material = results.getBigDecimal("material_cost");
+            BigDecimal labor = results.getBigDecimal("labor_cost");
+            BigDecimal freight = results.getBigDecimal("freight_cost");
 
             Part part = new Part(id, name, number, material, labor, freight);
 

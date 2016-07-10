@@ -1,5 +1,6 @@
 package gui;
 
+import java.math.BigDecimal;
 import java.util.EventObject;
 
 /**
@@ -8,15 +9,15 @@ import java.util.EventObject;
 public class FormEvent extends EventObject{
     private String partName;
     private String partNumber;
-    private String materialCost;
-    private String laborCost;
-    private String freightCost;
+    private BigDecimal materialCost;
+    private BigDecimal laborCost;
+    private BigDecimal freightCost;
 
     public FormEvent(Object source){
         super(source);
     }
 
-    public FormEvent(Object source, String partName, String partNumber, String materialCost, String laborCost, String freightCost){
+    public FormEvent(Object source, String partName, String partNumber, BigDecimal materialCost, BigDecimal laborCost, BigDecimal freightCost){
         super(source);
 
         this.partName = partName;
@@ -26,11 +27,11 @@ public class FormEvent extends EventObject{
         this.freightCost = freightCost;
     }
 
-    public String getFreightCost() {
+    public BigDecimal getFreightCost() {
         return freightCost;
     }
 
-    public void setFreightCost(String freightCost) {
+    public void setFreightCost(BigDecimal freightCost) {
         this.freightCost = freightCost;
     }
 
@@ -50,19 +51,19 @@ public class FormEvent extends EventObject{
         this.partNumber = partNumber;
     }
 
-    public String getMaterialCost() {
+    public BigDecimal getMaterialCost() {
         return materialCost;
     }
 
-    public void setMaterialCost(String materialCost) {
+    public void setMaterialCost(BigDecimal materialCost) {
         this.materialCost = materialCost;
     }
 
-    public String getLaborCost() {
+    public BigDecimal getLaborCost() {
         return laborCost;
     }
 
-    public void setLaborCost(String laborCost) {
+    public void setLaborCost(BigDecimal laborCost) {
         this.laborCost = laborCost;
     }
 }

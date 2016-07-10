@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by jourdanwoodrich on 6/21/16.
@@ -12,11 +13,11 @@ public class Part implements Serializable{
     private int id;
     private String partName;
     private String partNumber;
-    private String materialCost;
-    private String laborCost;
-    private String freightCost;
+    private BigDecimal materialCost;
+    private BigDecimal laborCost;
+    private BigDecimal freightCost;
 
-    public Part (String partName, String partNumber, String materialCost, String laborCost, String freightCost){
+    public Part (String partName, String partNumber, BigDecimal materialCost, BigDecimal laborCost, BigDecimal freightCost){
         this.partName = partName;
         this.partNumber = partNumber;
         this.materialCost = materialCost;
@@ -26,7 +27,7 @@ public class Part implements Serializable{
         count++;
     }
 
-    public Part (int id, String partName, String partNumber, String materialCost, String laborCost, String freightCost){
+    public Part (int id, String partName, String partNumber, BigDecimal materialCost, BigDecimal laborCost, BigDecimal freightCost){
         this(partName, partNumber, materialCost, laborCost, freightCost);
         this.id = id;
     }
@@ -55,23 +56,23 @@ public class Part implements Serializable{
         this.partNumber = partNumber;
     }
 
-    public String getMaterialCost() {
+    public BigDecimal getMaterialCost() {
         return materialCost;
     }
 
-    public void setMaterialCost(String materialCost) {
+    public void setMaterialCost(BigDecimal materialCost) {
         this.materialCost = materialCost;
     }
 
-    public String getLaborCost() {
+    public BigDecimal getLaborCost() {
         return laborCost;
     }
 
-    public void setLaborCost(String laborCost) {
+    public void setLaborCost(BigDecimal laborCost) {
         this.laborCost = laborCost;
     }
 
-    public String getFreightCost() {
+    public BigDecimal getFreightCost() {
         return freightCost;
     }
 
@@ -79,7 +80,7 @@ public class Part implements Serializable{
         return id + " " + partName;
     }
 
-    public void setFreightCost(String freightCost) {
+    public void setFreightCost(BigDecimal freightCost) {
         this.freightCost = freightCost;
     }
 }

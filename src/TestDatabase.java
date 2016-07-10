@@ -17,8 +17,8 @@ public class TestDatabase {
             e.printStackTrace();
         }
 
-        db.addPart(new Part("Engine", "001-1234", "1200.00", "120.00", "25.00"));
-        db.addPart(new Part("Radiator", "002-1235", "800.00", "60.00", "15.00"));
+//        db.addPart(new Part("Engine", "001-1234", "1200.00", "120.00", "25.00"));
+//        db.addPart(new Part("Radiator", "002-1235", "800.00", "60.00", "15.00"));
 
         try {
             db.save();

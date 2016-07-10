@@ -9,7 +9,9 @@ import model.Variables;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.Currency;
 import java.util.List;
 
 /**
@@ -44,9 +46,9 @@ public class Controller {
     public void addPart(FormEvent e){
         String partName = e.getPartName();
         String partNumber = e.getPartNumber();
-        String materialCost = e.getMaterialCost();
-        String laborCost = e.getLaborCost();
-        String freightCost = e.getFreightCost();
+        BigDecimal materialCost = e.getMaterialCost();
+        BigDecimal laborCost = e.getLaborCost();
+        BigDecimal freightCost = e.getFreightCost();
 
         Part part = new Part(partName,partNumber,materialCost,laborCost,freightCost);
         db.addPart(part);

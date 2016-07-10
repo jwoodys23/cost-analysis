@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.math.BigDecimal;
 
 /**
  * Created by jourdanwoodrich on 6/19/16.
@@ -23,6 +24,7 @@ public class FormPanel extends JPanel {
     private JCheckBox customFreight;
     private JButton okBtn;
     private FormListener formListener;
+    private BigDecimal freightCost;
 
 
     public FormPanel() {
@@ -62,9 +64,20 @@ public class FormPanel extends JPanel {
         okBtn.addActionListener(e -> {
             String partName = partNameField.getText();
             String partNumber = partNumberField.getText();
-            String materialCost = materialCostField.getText();
-            String laborCost = laborCostField.getText();
-            String freightCost = freightCostField.getText();
+            String matCostField = materialCostField.getText();
+            String labCostField = laborCostField.getText();
+            String freightCostFieldValue = freightCostField.getText();
+            System.out.println(freightCostLabel.isEnabled());
+
+
+            BigDecimal materialCost =  new BigDecimal(matCostField.replaceAll("[^.\\d]", ""));
+            BigDecimal laborCost = new BigDecimal(labCostField.replaceAll("[^.\\d]", ""));
+            if (freightCostLabel.isEnabled()){
+                freightCost = new BigDecimal(freightCostFieldValue.replaceAll("[^.\\d]", ""));
+            } else {
+                freightCost = BigDecimal.valueOf(0.00);
+            }
+
 
             FormEvent ev = new FormEvent(this, partName, partNumber,materialCost,laborCost,freightCost);
             if (formListener!=null){

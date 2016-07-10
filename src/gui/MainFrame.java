@@ -202,7 +202,8 @@ public class MainFrame extends JFrame {
         menuBar.add(windowMenu);
 
         report.addActionListener(e -> {
-            new Report();
+                new Report();
+
         });
 
         //Action Listeners
