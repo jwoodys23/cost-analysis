@@ -1,5 +1,7 @@
 package model;
 
+import org.apache.xpath.operations.Variable;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.sql.*;
@@ -11,10 +13,6 @@ import java.util.*;
 public class Database {
     private List<Part> parts;
     private Variables variables;
-    private String stdLaborHrs;
-    private String actualLaborHrs;
-    private String overheadRate;
-    private String sellingPrice;
 
     //private double
     //private List<Variables> variables;
@@ -48,6 +46,68 @@ public class Database {
                 System.out.println("Can't close connection");
             }
         }
+    }
+
+    public void saveVariable() throws SQLException{
+        String checkSql = "Select count(*) as count from variables where id=?";
+
+        PreparedStatement checkStmt = con.prepareStatement(checkSql);
+
+        String insertSql = "insert into variables (id, std_labor, actual_labor, overhead_rate, actual_overhead, actualFreight, price) values(?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement insertStmt = con.prepareStatement(insertSql);
+
+        String updateSql = "update variables set std_labor=?, actual_labor=?, overhead_rate=?, actual_overhead=?, actual_freight=?, price=? where id=?";
+        PreparedStatement updateStmt = con.prepareStatement(updateSql);
+
+        int id = 1;
+        Double stdLabor = getVariables().getStdLabor();
+        Double actLabor = variables.getActualLabor();
+        Double overheadRate = variables.getOverheadRate();
+        Double actOverhead = variables.getActOverhead();
+        Double actualFreight = variables.getActualFreight();
+        Double price = variables.getPrice();
+        System.out.println(stdLabor);
+        System.out.println(actLabor);
+
+        checkStmt.setInt(1,id);
+        ResultSet checkResult = checkStmt.executeQuery();
+        checkResult.next();
+        int count = checkResult.getInt(1);
+
+        if (count == 0){
+
+            System.out.println("Inserting variables");
+            int col = 1;
+            insertStmt.setInt(col++, id);
+            insertStmt.setDouble(col++, stdLabor);
+            insertStmt.setDouble(col++, actLabor);
+            insertStmt.setDouble(col++, overheadRate);
+            insertStmt.setDouble(col++, actOverhead);
+            insertStmt.setDouble(col++, actualFreight);
+            insertStmt.setDouble(col++, price);
+
+            insertStmt.executeUpdate();
+
+        } else {
+            int col = 1;
+            updateStmt.setDouble(col++, stdLabor);
+            updateStmt.setDouble(col++, actLabor);
+            updateStmt.setDouble(col++, overheadRate);
+            updateStmt.setDouble(col++, actOverhead);
+            updateStmt.setDouble(col++, actualFreight);
+            updateStmt.setDouble(col++, price);
+            updateStmt.setInt(col++, id);
+
+            updateStmt.executeUpdate();
+
+            System.out.println("Updating variables");
+
+        }
+
+        updateStmt.close();
+        insertStmt.close();
+        checkStmt.close();
+
     }
 
     public void save() throws SQLException{
@@ -140,13 +200,16 @@ public class Database {
         parts.add(part);
     }
 
-    public void setVariables(double laborRate, double laborHrs, double overtimeRate, double sellingPrice){
-        variables.setLaborRate(laborRate);
-        variables.setLaborHrs(laborHrs);
-        variables.setOvertimeRate(overtimeRate);
-        variables.setSellingPrice(sellingPrice);
-        System.out.println("Variables set");
+    public void addVariable(Double stdLabor, Double actualLabor, Double overheadRate, Double actOverhead, Double actualFreight, Double price){
+        new Variables(stdLabor, actualLabor, overheadRate, actOverhead, actualFreight, price);
+        variables.setStdLabor(stdLabor);
+        variables.setActualLabor(actualLabor);
+        variables.setOverheadRate(overheadRate);
+        variables.setActOverhead(actOverhead);
+        variables.setActualFreight(actualFreight);
+        variables.setPrice(price);
     }
+
 
 
     public void removePart(int row){
@@ -157,9 +220,10 @@ public class Database {
         return Collections.unmodifiableList(parts);
     }
 
-//    public List<Variables> getVariables(){
-//        return Collections.unmodifiableList(variables);
-//    }
+    public Variables getVariables(){
+        return variables;
+    }
+
 
     public void saveToFile (File file) throws IOException{
         FileOutputStream fos = new FileOutputStream(file);

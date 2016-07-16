@@ -4,56 +4,73 @@ package model;
  * Created by jourdanwoodrich on 7/4/16.
  */
 public class Variables {
-    private int id;
-    private double laborRate;
-    private double laborHrs;
-    private double overtimeRate;
-    private double sellingPrice;
+    private Double stdLabor;
+    private Double actualLabor;
+    private Double overheadRate;
+    private Double actOverhead;
+    private Double actualFreight;
+    private Double price;
 
     public Variables(){
 
     }
 
-    public Variables(double laborRate, double laborHrs, double overtimeRate, double sellingPrice){
-        this.laborRate = laborRate;
-        this.laborHrs = laborHrs;
-        this.overtimeRate = overtimeRate;
-        this.sellingPrice = sellingPrice;
+
+    public Variables(Double stdLabor, Double actualLabor, Double overheadRate, Double actOverhead, Double actualFreight, Double price){
+        this.stdLabor = stdLabor;
+        this.actualLabor = actualLabor;
+        this.overheadRate = overheadRate;
+        this.actOverhead = actOverhead;
+        this.actualFreight = actualFreight;
+        this.price = price;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public Double getActualFreight() {
+        return actualFreight;
     }
 
-    public double getLaborRate() {
-        return laborRate;
+    public void setActualFreight(Double actualFreight) {
+        this.actualFreight = actualFreight;
     }
 
-    public void setLaborRate(double laborRate) {
-        this.laborRate = laborRate;
+    public Double getStdLabor() {
+        return stdLabor;
     }
 
-    public double getLaborHrs() {
-        return laborHrs;
+    public void setStdLabor(Double stdLabor) {
+        this.stdLabor = stdLabor;
     }
 
-    public void setLaborHrs(double laborHrs) {
-        this.laborHrs = laborHrs;
+    public Double getActualLabor() {
+        return actualLabor;
     }
 
-    public double getOvertimeRate() {
-        return overtimeRate;
+    public void setActualLabor(Double actualLabor) {
+        this.actualLabor = actualLabor;
     }
 
-    public void setOvertimeRate(double overtimeRate) {
-        this.overtimeRate = overtimeRate;
+    public Double getOverheadRate() {
+        return overheadRate;
     }
 
-    public double getSellingPrice() {
-        return sellingPrice;
+    public void setOverheadRate(Double overheadRate) {
+        this.overheadRate = overheadRate;
     }
 
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
+    public Double getActOverhead() {
+        return actOverhead;
+    }
+
+    public void setActOverhead(Double actOverhead) {
+        this.actOverhead = actOverhead;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

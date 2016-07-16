@@ -29,7 +29,7 @@ public class FormPanel extends JPanel {
 
     public FormPanel() {
         Dimension dim = getPreferredSize();
-        dim.width = 275;
+        dim.width = 350;
         setPreferredSize(dim);
 
         //Labels
@@ -69,7 +69,7 @@ public class FormPanel extends JPanel {
             String freightCostFieldValue = freightCostField.getText();
             System.out.println(freightCostLabel.isEnabled());
 
-
+            //TODO: make material cost field accept empty value (Just add if statement )
             BigDecimal materialCost =  new BigDecimal(matCostField.replaceAll("[^.\\d]", ""));
             BigDecimal laborCost = new BigDecimal(labCostField.replaceAll("[^.\\d]", ""));
             if (freightCostLabel.isEnabled()){

@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import model.Variables;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -18,7 +19,9 @@ import java.util.prefs.Preferences;
  */
 public class MainFrame extends JFrame {
 
-    private ResultPanel textPanel;
+    //private SettingForm settingsPanel;
+    private SettingPanel settingPanel;
+    private SettingForm settingForm;
     private ToolBar toolBar;
     private FormPanel formPanel;
     private JFileChooser fileChooser;
@@ -27,7 +30,7 @@ public class MainFrame extends JFrame {
     private PrefsDialog prefsDialog;
     private Preferences prefs;
     private JTabbedPane tabbedPane;
-    private ResultDialog resultDialog;
+    private ResultsDialog resultsDialog;
 
 
     public MainFrame(){
@@ -36,17 +39,18 @@ public class MainFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        textPanel = new ResultPanel();
+        settingPanel = new SettingPanel();
+        settingForm = new SettingForm();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
         tabbedPane = new JTabbedPane();
-        resultDialog = new ResultDialog(this);
+        //resultsDialog = new ResultsDialog(this);
         tablePanel.setName("Parts Database");
-        textPanel.setName("Report");
+        settingPanel.setName("Settings");
 
         tabbedPane.addTab("Parts Database", tablePanel);
-        tabbedPane.addTab("Report", textPanel);
+        tabbedPane.addTab("Settings", settingPanel);
 
         tabbedPane.addChangeListener(e -> tabChanged());
 
@@ -116,12 +120,17 @@ public class MainFrame extends JFrame {
 
         });
 
-        resultDialog.setSettingListener(e -> {
-            controller.addSettings(e);
-            textPanel.revalidate();
-            textPanel.repaint();
-            //System.out.println("Test");
+        settingForm.setSettingListener(e ->{
+            controller.addVariable(e);
+
         });
+
+//        resultsDialog.setSettingListener(e -> {
+//            controller.addSettings(e);
+////            settingsPanel.revalidate();
+////            settingsPanel.repaint();
+//            //System.out.println("Test");
+//        });
 
         //tabbedPane;
 
@@ -134,28 +143,34 @@ public class MainFrame extends JFrame {
             }
         });
 
-        add(formPanel, BorderLayout.WEST);
+        tabChanged();
         add(toolBar, BorderLayout.PAGE_START);
         add(tabbedPane, BorderLayout.CENTER);
 
-        setSize(900, 600);
+        setSize(1200, 600);
+
         setMinimumSize(new Dimension(500,400));
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
     }
 
+    //Switches the forms that appear based on what tab is selected
+    //Added so that the Forms don't change position when the tab is changed
     private void tabChanged(){
-
         Component tab = tabbedPane.getSelectedComponent();
         String name = tab.getName();
-        if (name == "Report"){
+        if (name == "Settings"){
+
+            add(settingForm, BorderLayout.WEST);
             formPanel.setVisible(false);
+            settingPanel.setVisible(true);
         } else {
-            System.out.println(name);
+
+            add(formPanel, BorderLayout.WEST);
+            settingPanel.setVisible(false);
             formPanel.setVisible(true);
         }
     }
-
 
 
     private void connect(){
@@ -213,7 +228,7 @@ public class MainFrame extends JFrame {
         );
 
         settings.addActionListener(e ->
-                resultDialog.setVisible(true)
+                resultsDialog.setVisible(true)
         );
 
         showFormItem.addActionListener(e -> {
