@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.geom.Arc2D;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 /**
@@ -38,6 +39,7 @@ public class SettingForm extends JPanel {
         dim.width = 350;
         setPreferredSize(dim);
         controller = new Controller();
+
 
 
         //Labels
@@ -178,12 +180,12 @@ public class SettingForm extends JPanel {
         saveBtn.addActionListener(e ->{
 
             //TODO: make all these fields accept empty value(Just add if statements to all)
-            Double stdLabor = Double.parseDouble(stdLaborHrsInput.getText());
-            Double actualLabor = Double.parseDouble(actualLaborHrsInput.getText());
-            Double overheadRate = Double.parseDouble(overheadRateInput.getText());
-            Double actOverhead = Double.parseDouble(actualOverheadInput.getText());
-            Double actFreight = Double.parseDouble(actualFreightInput.getText());
-            Double price = Double.parseDouble(sellingInput.getText());
+            String stdLabor = stdLaborHrsInput.getText();
+            String actualLabor = actualLaborHrsInput.getText();
+            String overheadRate = overheadRateInput.getText();
+            String actOverhead = actualOverheadInput.getText();
+            String actFreight = actualFreightInput.getText();
+            String price = sellingInput.getText();
 
 
             SettingEvent ev = new SettingEvent(this, stdLabor, actualLabor, overheadRate, actOverhead, actFreight, price);

@@ -6,10 +6,7 @@ import model.Variables;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.prefs.Preferences;
@@ -19,7 +16,6 @@ import java.util.prefs.Preferences;
  */
 public class MainFrame extends JFrame {
 
-    //private SettingForm settingsPanel;
     private SettingPanel settingPanel;
     private SettingForm settingForm;
     private ToolBar toolBar;
@@ -30,7 +26,6 @@ public class MainFrame extends JFrame {
     private PrefsDialog prefsDialog;
     private Preferences prefs;
     private JTabbedPane tabbedPane;
-    private ResultsDialog resultsDialog;
 
 
     public MainFrame(){
@@ -45,9 +40,9 @@ public class MainFrame extends JFrame {
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
         tabbedPane = new JTabbedPane();
-        //resultsDialog = new ResultsDialog(this);
         tablePanel.setName("Parts Database");
         settingPanel.setName("Settings");
+        formPanel.setName("Form");
 
         tabbedPane.addTab("Parts Database", tablePanel);
         tabbedPane.addTab("Settings", settingPanel);
@@ -65,6 +60,7 @@ public class MainFrame extends JFrame {
         tablePanel.setData(controller.getPart());
 
         tablePanel.setPartTableListener(row -> controller.removePart(row));
+
 
         prefsDialog.setPrefsListener((user, password, port) -> {
             prefs.put("user", user);
@@ -120,19 +116,13 @@ public class MainFrame extends JFrame {
 
         });
 
+
         settingForm.setSettingListener(e ->{
             controller.addVariable(e);
+            settingPanel.getVariable(e);
 
         });
 
-//        resultsDialog.setSettingListener(e -> {
-//            controller.addSettings(e);
-////            settingsPanel.revalidate();
-////            settingsPanel.repaint();
-//            //System.out.println("Test");
-//        });
-
-        //tabbedPane;
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -143,6 +133,7 @@ public class MainFrame extends JFrame {
             }
         });
 
+        //add(selectTab(), BorderLayout.WEST);
         tabChanged();
         add(toolBar, BorderLayout.PAGE_START);
         add(tabbedPane, BorderLayout.CENTER);
@@ -160,16 +151,14 @@ public class MainFrame extends JFrame {
         Component tab = tabbedPane.getSelectedComponent();
         String name = tab.getName();
         if (name == "Settings"){
-
+            remove(formPanel);
             add(settingForm, BorderLayout.WEST);
-            formPanel.setVisible(false);
-            settingPanel.setVisible(true);
-        } else {
-
+        } else if (name=="Parts Database"){
+            remove(settingForm);
             add(formPanel, BorderLayout.WEST);
-            settingPanel.setVisible(false);
-            formPanel.setVisible(true);
+
         }
+        repaint();
     }
 
 
@@ -199,14 +188,12 @@ public class MainFrame extends JFrame {
         // View Menu
         JMenu viewMenu = new JMenu("View");
         JMenuItem prefs = new JMenuItem("Preferences...");
-        JMenuItem settings = new JMenuItem("Settings...");
         JMenuItem report = new JMenuItem("Report");
         JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Part Form");
         showFormItem.setSelected(true);
 
         viewMenu.add(showFormItem);
         viewMenu.add(prefs);
-        viewMenu.add(settings);
         viewMenu.add(report);
 
         //Add show menu to window menu
@@ -227,9 +214,6 @@ public class MainFrame extends JFrame {
             prefsDialog.setVisible(true)
         );
 
-        settings.addActionListener(e ->
-                resultsDialog.setVisible(true)
-        );
 
         showFormItem.addActionListener(e -> {
             JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) e.getSource();

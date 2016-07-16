@@ -6,15 +6,15 @@ import java.util.EventObject;
  * Created by jourdanwoodrich on 7/4/16.
  */
 public class SettingEvent extends EventObject {
-    private Double stdLabor;
-    private Double actualLabor;
-    private Double overheadRate;
-    private Double actOverhead;
-    private Double actFreight;
-    private Double price;
+    private String stdLabor;
+    private String  actualLabor;
+    private String  overheadRate;
+    private String  actOverhead;
+    private String  actFreight;
+    private String  price;
     public SettingEvent(Object source){ super(source); }
 
-    public SettingEvent(Object source, Double stdLabor, Double actualLabor, Double overheadRate, Double actOverhead, Double actFreight, Double price){
+    public SettingEvent(Object source, String stdLabor, String  actualLabor, String  overheadRate, String  actOverhead, String  actFreight, String  price){
         super(source);
         this.stdLabor = stdLabor;
         this.actualLabor = actualLabor;
@@ -26,51 +26,51 @@ public class SettingEvent extends EventObject {
     }
 
 
-    public Double getActFreight() {
+    public String  getActFreight() {
         return actFreight;
     }
 
-    public void setActFreight(Double actFreight) {
+    public void setActFreight(String  actFreight) {
         this.actFreight = actFreight;
     }
 
-    public Double getStdLabor() {
+    public String getStdLabor() {
         return stdLabor;
     }
 
-    public void setStdLabor(Double stdLabor) {
+    public void setStdLabor(String stdLabor) {
         this.stdLabor = stdLabor;
     }
 
-    public Double getActualLabor() {
+    public String  getActualLabor() {
         return actualLabor;
     }
 
-    public void setActualLabor(Double actualLabor) {
+    public void setActualLabor(String  actualLabor) {
         this.actualLabor = actualLabor;
     }
 
-    public Double getOverheadRate() {
+    public String  getOverheadRate() {
         return overheadRate;
     }
 
-    public void setOverheadRate(Double overheadRate) {
+    public void setOverheadRate(String  overheadRate) {
         this.overheadRate = overheadRate;
     }
 
-    public Double getActOverhead() {
+    public String  getActOverhead() {
         return actOverhead;
     }
 
-    public void setActOverhead(Double actOverhead) {
+    public void setActOverhead(String  actOverhead) {
         this.actOverhead = actOverhead;
     }
 
-    public Double getPrice() {
+    public String  getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String  price) {
         this.price = price;
     }
 }

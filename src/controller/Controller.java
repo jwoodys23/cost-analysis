@@ -2,17 +2,14 @@ package controller;
 
 import gui.FormEvent;
 import gui.SettingEvent;
-import gui.VariancePanel;
 import model.Database;
 import model.Part;
-import model.Settings;
 import model.Variables;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.Currency;
 import java.util.List;
 
 /**
@@ -35,15 +32,23 @@ public class Controller {
 
 
     public void addVariable(SettingEvent e){
-        Double stdLabor = e.getStdLabor();
-        Double actualLabor = e.getActualLabor();
-        Double overheadRate = e.getOverheadRate();
-        Double actOverhead = e.getActOverhead();
-        Double actualFreight = e.getActFreight();
-        Double price = e.getPrice();
+        String stdLabor = e.getStdLabor();
+        String actualLabor = e.getActualLabor();
+        String overheadRate = e.getOverheadRate();
+        String actOverhead = e.getActOverhead();
+        String actualFreight = e.getActFreight();
+        String price = e.getPrice();
+
+        BigDecimal standardLabor =  new BigDecimal(stdLabor.replaceAll("[^.\\d]", ""));
+        BigDecimal actLabor =  new BigDecimal(actualLabor.replaceAll("[^.\\d]", ""));
+        BigDecimal stdOverheadRate =  new BigDecimal(overheadRate.replaceAll("[^.\\d]", ""));
+        BigDecimal actualOverhead =  new BigDecimal(actOverhead.replaceAll("[^.\\d]", ""));
+        BigDecimal actFreight =  new BigDecimal(actualFreight.replaceAll("[^.\\d]", ""));
+        BigDecimal sellingPrice =  new BigDecimal(price.replaceAll("[^.\\d]", ""));
+
 
         //Variables variables = new Variables(stdLabor, actualLabor, overheadRate, actOverhead, price);
-        db.addVariable(stdLabor, actualLabor, overheadRate,actOverhead, actualFreight, price);
+        db.addVariable(standardLabor, actLabor, stdOverheadRate,actualOverhead, actFreight, sellingPrice);
 
         //System.out.println(variables.getActOverhead());
     }

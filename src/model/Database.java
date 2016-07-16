@@ -60,12 +60,12 @@ public class Database {
         PreparedStatement updateStmt = con.prepareStatement(updateSql);
 
         int id = 1;
-        Double stdLabor = getVariables().getStdLabor();
-        Double actLabor = variables.getActualLabor();
-        Double overheadRate = variables.getOverheadRate();
-        Double actOverhead = variables.getActOverhead();
-        Double actualFreight = variables.getActualFreight();
-        Double price = variables.getPrice();
+        BigDecimal stdLabor = getVariables().getStdLabor();
+        BigDecimal actLabor = variables.getActualLabor();
+        BigDecimal overheadRate = variables.getOverheadRate();
+        BigDecimal actOverhead = variables.getActOverhead();
+        BigDecimal actualFreight = variables.getActualFreight();
+        BigDecimal price = variables.getPrice();
         System.out.println(stdLabor);
         System.out.println(actLabor);
 
@@ -79,23 +79,23 @@ public class Database {
             System.out.println("Inserting variables");
             int col = 1;
             insertStmt.setInt(col++, id);
-            insertStmt.setDouble(col++, stdLabor);
-            insertStmt.setDouble(col++, actLabor);
-            insertStmt.setDouble(col++, overheadRate);
-            insertStmt.setDouble(col++, actOverhead);
-            insertStmt.setDouble(col++, actualFreight);
-            insertStmt.setDouble(col++, price);
+            insertStmt.setBigDecimal(col++, stdLabor);
+            insertStmt.setBigDecimal(col++, actLabor);
+            insertStmt.setBigDecimal(col++, overheadRate);
+            insertStmt.setBigDecimal(col++, actOverhead);
+            insertStmt.setBigDecimal(col++, actualFreight);
+            insertStmt.setBigDecimal(col++, price);
 
             insertStmt.executeUpdate();
 
         } else {
             int col = 1;
-            updateStmt.setDouble(col++, stdLabor);
-            updateStmt.setDouble(col++, actLabor);
-            updateStmt.setDouble(col++, overheadRate);
-            updateStmt.setDouble(col++, actOverhead);
-            updateStmt.setDouble(col++, actualFreight);
-            updateStmt.setDouble(col++, price);
+            updateStmt.setBigDecimal(col++, stdLabor);
+            updateStmt.setBigDecimal(col++, actLabor);
+            updateStmt.setBigDecimal(col++, overheadRate);
+            updateStmt.setBigDecimal(col++, actOverhead);
+            updateStmt.setBigDecimal(col++, actualFreight);
+            updateStmt.setBigDecimal(col++, price);
             updateStmt.setInt(col++, id);
 
             updateStmt.executeUpdate();
@@ -200,7 +200,7 @@ public class Database {
         parts.add(part);
     }
 
-    public void addVariable(Double stdLabor, Double actualLabor, Double overheadRate, Double actOverhead, Double actualFreight, Double price){
+    public void addVariable(BigDecimal stdLabor, BigDecimal actualLabor, BigDecimal overheadRate, BigDecimal actOverhead, BigDecimal actualFreight, BigDecimal price){
         new Variables(stdLabor, actualLabor, overheadRate, actOverhead, actualFreight, price);
         variables.setStdLabor(stdLabor);
         variables.setActualLabor(actualLabor);

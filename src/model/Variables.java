@@ -1,22 +1,24 @@
 package model;
 
+import java.math.BigDecimal;
+
 /**
  * Created by jourdanwoodrich on 7/4/16.
  */
 public class Variables {
-    private Double stdLabor;
-    private Double actualLabor;
-    private Double overheadRate;
-    private Double actOverhead;
-    private Double actualFreight;
-    private Double price;
+    private BigDecimal stdLabor;
+    private BigDecimal actualLabor;
+    private BigDecimal overheadRate;
+    private BigDecimal actOverhead;
+    private BigDecimal actualFreight;
+    private BigDecimal price;
 
     public Variables(){
 
     }
 
 
-    public Variables(Double stdLabor, Double actualLabor, Double overheadRate, Double actOverhead, Double actualFreight, Double price){
+    public Variables(BigDecimal stdLabor, BigDecimal actualLabor, BigDecimal overheadRate, BigDecimal actOverhead, BigDecimal actualFreight, BigDecimal price){
         this.stdLabor = stdLabor;
         this.actualLabor = actualLabor;
         this.overheadRate = overheadRate;
@@ -26,51 +28,51 @@ public class Variables {
     }
 
 
-    public Double getActualFreight() {
+    public BigDecimal getActualFreight() {
         return actualFreight;
     }
 
-    public void setActualFreight(Double actualFreight) {
+    public void setActualFreight(BigDecimal actualFreight) {
         this.actualFreight = actualFreight;
     }
 
-    public Double getStdLabor() {
+    public BigDecimal getStdLabor() {
         return stdLabor;
     }
 
-    public void setStdLabor(Double stdLabor) {
+    public void setStdLabor(BigDecimal stdLabor) {
         this.stdLabor = stdLabor;
     }
 
-    public Double getActualLabor() {
+    public BigDecimal getActualLabor() {
         return actualLabor;
     }
 
-    public void setActualLabor(Double actualLabor) {
+    public void setActualLabor(BigDecimal actualLabor) {
         this.actualLabor = actualLabor;
     }
 
-    public Double getOverheadRate() {
+    public BigDecimal getOverheadRate() {
         return overheadRate;
     }
 
-    public void setOverheadRate(Double overheadRate) {
+    public void setOverheadRate(BigDecimal overheadRate) {
         this.overheadRate = overheadRate;
     }
 
-    public Double getActOverhead() {
+    public BigDecimal getActOverhead() {
         return actOverhead;
     }
 
-    public void setActOverhead(Double actOverhead) {
+    public void setActOverhead(BigDecimal actOverhead) {
         this.actOverhead = actOverhead;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
