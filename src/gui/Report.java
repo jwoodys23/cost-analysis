@@ -104,7 +104,7 @@ public class Report {
                     .summary(cmp.horizontalList(materialChart, laborChart, totalVarianceChart))
 
                     .setDataSource("select * from parts", con)
-                    .show();
+                    .show(false);
         } catch (DRException e){
             e.printStackTrace();
         }
