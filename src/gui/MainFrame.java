@@ -46,7 +46,7 @@ public class MainFrame extends JFrame {
         formPanel.setName("Form");
 
         tabbedPane.addTab("Parts Database", tablePanel);
-        tabbedPane.addTab("Standard Costs", stdCostTablePanel);
+        //tabbedPane.addTab("Standard Costs", stdCostTablePanel);
 
        // tabbedPane.addChangeListener(e -> tabChanged());
 
@@ -62,7 +62,26 @@ public class MainFrame extends JFrame {
 
         tablePanel.setData(controller.getPart());
 
-        tablePanel.setPartTableListener(row -> controller.removePart(row));
+        tablePanel.setPartTableListener(new PartTableListener() {
+            @Override
+            public void rowDeleted(int row) {
+                controller.removePart(row);
+
+            }
+            public void deleteEventOccurred(int row){
+                connect();
+                try {
+                    try {
+                        controller.connect();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    controller.deletePart(row);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
         prefsDialog.setPrefsListener((user, password, port) -> {
@@ -128,6 +147,7 @@ public class MainFrame extends JFrame {
                 tablePanel.refresh();
                 stdCostTablePanel.refresh();
             }
+
         });
 
         formPanel.setFormListener(e -> {

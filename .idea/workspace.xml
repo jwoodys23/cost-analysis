@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e7c6673-4bd5-4971-88b9-8e1c4ecb2920" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/StandardTablePanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/StdPartTableModel.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/model/Variables.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/SettingPanel.java" afterPath="$PROJECT_DIR$/src/gui/StandardCostFormPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/Controller.java" afterPath="$PROJECT_DIR$/src/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/FormEvent.java" afterPath="$PROJECT_DIR$/src/gui/FormEvent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/FormPanel.java" afterPath="$PROJECT_DIR$/src/gui/FormPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/PartTableListener.java" afterPath="$PROJECT_DIR$/src/gui/PartTableListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/PartTableModel.java" afterPath="$PROJECT_DIR$/src/gui/PartTableModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/Report.java" afterPath="$PROJECT_DIR$/src/gui/Report.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/SettingForm.java" afterPath="$PROJECT_DIR$/src/gui/SettingForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/TablePanel.java" afterPath="$PROJECT_DIR$/src/gui/TablePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Database.java" afterPath="$PROJECT_DIR$/src/model/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Part.java" afterPath="$PROJECT_DIR$/src/model/Part.java" />
     </list>
     <ignored path="costAnalysis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,45 +37,7 @@
     <favorites_list name="costAnalysis" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
-              <folding>
-                <marker date="1469379314000" expanded="true" signature="1497:1543" ph="Select count... " />
-                <marker date="1469379314000" expanded="true" signature="1646:1881" ph="insert into parts... " />
-                <marker date="1469379314000" expanded="true" signature="1985:2202" ph="update parts... " />
-                <marker date="1469379314000" expanded="true" signature="5344:5550" ph="SELECT id, p... parts" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/MainFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -112,14 +68,12 @@
         <option value="$PROJECT_DIR$/src/InventoryFileFilter.java" />
         <option value="$PROJECT_DIR$/src/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/PersonTableListener.java" />
-        <option value="$PROJECT_DIR$/src/gui/PartTableListener.java" />
         <option value="$PROJECT_DIR$/out/production/costAnalysis/controller/Controller.class" />
         <option value="$PROJECT_DIR$/src/gui/PrefsListener.java" />
         <option value="$PROJECT_DIR$/src/gui/PrefsDialog.java" />
         <option value="$PROJECT_DIR$/src/gui/TextPanel.java" />
         <option value="$PROJECT_DIR$/src/gui/GraphPanel.java" />
         <option value="$PROJECT_DIR$/src/gui/ResultForm.java" />
-        <option value="$PROJECT_DIR$/src/gui/TablePanel.java" />
         <option value="$PROJECT_DIR$/src/model/Setting.java" />
         <option value="$PROJECT_DIR$/src/gui/SettingListener.java" />
         <option value="$PROJECT_DIR$/src/gui/ToolBar.java" />
@@ -140,15 +94,17 @@
         <option value="$PROJECT_DIR$/src/model/Variables.java" />
         <option value="$PROJECT_DIR$/src/gui/SettingForm.java" />
         <option value="$PROJECT_DIR$/src/gui/StdPartTableModel.java" />
-        <option value="$PROJECT_DIR$/src/gui/PartTableModel.java" />
         <option value="$PROJECT_DIR$/src/gui/StandardTablePanel.java" />
         <option value="$PROJECT_DIR$/src/gui/FormEvent.java" />
         <option value="$PROJECT_DIR$/src/model/Part.java" />
-        <option value="$PROJECT_DIR$/src/gui/FormPanel.java" />
         <option value="$PROJECT_DIR$/src/gui/Report.java" />
+        <option value="$PROJECT_DIR$/src/gui/PartTableListener.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/model/Database.java" />
         <option value="$PROJECT_DIR$/src/gui/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/gui/PartTableModel.java" />
+        <option value="$PROJECT_DIR$/src/model/Database.java" />
+        <option value="$PROJECT_DIR$/src/gui/TablePanel.java" />
+        <option value="$PROJECT_DIR$/src/gui/FormPanel.java" />
       </list>
     </option>
   </component>
@@ -822,7 +778,7 @@
       <workItem from="1469056181203" duration="3000" />
       <workItem from="1469056595586" duration="325000" />
       <workItem from="1469284622474" duration="118000" />
-      <workItem from="1469287060684" duration="16643000" />
+      <workItem from="1469287060684" duration="22278000" />
     </task>
     <task id="LOCAL-00001" summary="Begin adding labels and textfield">
       <created>1466373216029</created>
@@ -1118,11 +1074,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468713447279</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Configured database connection dialog. Added report">
+      <created>1469379477311</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1469379477311</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149331000" />
+    <option name="totallyTimeSpent" value="154966000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1145,7 +1108,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1205,7 +1168,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented PrefsDialog" />
     <MESSAGE value="Added components to PrefsDialog window" />
     <MESSAGE value="Add prefs node functionality" />
     <MESSAGE value="Finished PrefsDialog design and functionality" />
@@ -1230,7 +1192,8 @@
     <MESSAGE value="Reformated database for BigDecimal and Gui" />
     <MESSAGE value="Added Variables to Gui and Database. ResultsDialog is now obsolete" />
     <MESSAGE value="Variables functionality completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Variables functionality completed" />
+    <MESSAGE value="Configured database connection dialog. Added report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configured database connection dialog. Added report" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1261,10 +1224,13 @@
         <state relative-caret-position="330">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
-            <marker date="1469379314000" expanded="true" signature="1497:1543" ph="Select count... " />
-            <marker date="1469379314000" expanded="true" signature="1646:1881" ph="insert into parts... " />
-            <marker date="1469379314000" expanded="true" signature="1985:2202" ph="update parts... " />
-            <marker date="1469379314000" expanded="true" signature="5344:5550" ph="SELECT id, p... parts" />
+            <element signature="e#7473#7474#0" expanded="true" />
+            <element signature="e#7506#7507#0" expanded="true" />
+            <marker date="1469384942000" expanded="true" signature="1508:1536" ph="DELETE FROM " />
+            <marker date="1469384942000" expanded="true" signature="1822:1868" ph="Select count... " />
+            <marker date="1469384942000" expanded="true" signature="1971:2206" ph="insert into parts... " />
+            <marker date="1469384942000" expanded="true" signature="2310:2527" ph="update parts... " />
+            <marker date="1469384942000" expanded="true" signature="5669:5875" ph="SELECT id, p... parts" />
           </folding>
         </state>
       </provider>
@@ -1312,10 +1278,13 @@
         <state relative-caret-position="330">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
-            <marker date="1469379314000" expanded="true" signature="1497:1543" ph="Select count... " />
-            <marker date="1469379314000" expanded="true" signature="1646:1881" ph="insert into parts... " />
-            <marker date="1469379314000" expanded="true" signature="1985:2202" ph="update parts... " />
-            <marker date="1469379314000" expanded="true" signature="5344:5550" ph="SELECT id, p... parts" />
+            <element signature="e#7473#7474#0" expanded="true" />
+            <element signature="e#7506#7507#0" expanded="true" />
+            <marker date="1469384942000" expanded="true" signature="1508:1536" ph="DELETE FROM " />
+            <marker date="1469384942000" expanded="true" signature="1822:1868" ph="Select count... " />
+            <marker date="1469384942000" expanded="true" signature="1971:2206" ph="insert into parts... " />
+            <marker date="1469384942000" expanded="true" signature="2310:2527" ph="update parts... " />
+            <marker date="1469384942000" expanded="true" signature="5669:5875" ph="SELECT id, p... parts" />
           </folding>
         </state>
       </provider>
@@ -1401,13 +1370,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SettingFrame.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/ToolbarListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/ResultsDialog.java" />
     <entry file="file://$PROJECT_DIR$/src/gui/ToolBar.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1422,13 +1384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/PartTableListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1465,25 +1420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FormListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/PartTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/StdPartTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -1516,97 +1452,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FormPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/StandardCostFormPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
           <caret line="166" column="43" selection-start-line="166" selection-start-column="43" selection-end-line="166" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/TablePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-          <folding>
-            <element signature="e#1495#1496#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FormEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-631">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-          <folding>
-            <element signature="e#1545#1546#0" expanded="true" />
-            <element signature="e#1581#1582#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1693#1694#0" expanded="true" />
-            <element signature="e#1740#1741#0" expanded="true" />
-            <element signature="e#1779#1780#0" expanded="true" />
-            <element signature="e#1847#1848#0" expanded="true" />
-            <element signature="e#1903#1904#0" expanded="true" />
-            <element signature="e#1938#1939#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-            <element signature="e#2057#2058#0" expanded="true" />
-            <element signature="e#2099#2100#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2191#2192#0" expanded="true" />
-            <element signature="e#2237#2238#0" expanded="true" />
-            <element signature="e#2281#2282#0" expanded="true" />
-            <element signature="e#2317#2318#0" expanded="true" />
-            <element signature="e#2379#2380#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2513#2514#0" expanded="true" />
-            <element signature="e#2579#2580#0" expanded="true" />
-            <element signature="e#2633#2634#0" expanded="true" />
-            <element signature="e#2676#2677#0" expanded="true" />
-            <element signature="e#2711#2712#0" expanded="true" />
-            <element signature="e#2771#2772#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Part.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-          <folding>
-            <element signature="e#2903#2904#0" expanded="true" />
-            <element signature="e#2939#2940#0" expanded="true" />
-            <element signature="e#3001#3002#0" expanded="true" />
-            <element signature="e#3051#3052#0" expanded="true" />
-            <element signature="e#3098#3099#0" expanded="true" />
-            <element signature="e#3137#3138#0" expanded="true" />
-            <element signature="e#3205#3206#0" expanded="true" />
-            <element signature="e#3261#3262#0" expanded="true" />
-            <element signature="e#3296#3297#0" expanded="true" />
-            <element signature="e#3327#3328#0" expanded="true" />
-            <element signature="e#3375#3376#0" expanded="true" />
-            <element signature="e#3415#3416#0" expanded="true" />
-            <element signature="e#3457#3458#0" expanded="true" />
-            <element signature="e#3491#3492#0" expanded="true" />
-            <element signature="e#3549#3550#0" expanded="true" />
-            <element signature="e#3595#3596#0" expanded="true" />
-            <element signature="e#3639#3640#0" expanded="true" />
-            <element signature="e#3675#3676#0" expanded="true" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3787#3788#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1623,16 +1474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/PrefsDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1217">
@@ -1641,24 +1482,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/FormListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
+        <state relative-caret-position="120">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FormEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
           <folding>
-            <marker date="1469379314000" expanded="true" signature="1497:1543" ph="Select count... " />
-            <marker date="1469379314000" expanded="true" signature="1646:1881" ph="insert into parts... " />
-            <marker date="1469379314000" expanded="true" signature="1985:2202" ph="update parts... " />
-            <marker date="1469379314000" expanded="true" signature="5344:5550" ph="SELECT id, p... parts" />
+            <element signature="e#1643#1644#0" expanded="true" />
+            <element signature="e#1693#1694#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Part.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="159" column="28" selection-start-line="159" selection-start-column="28" selection-end-line="159" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/ToolbarListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/PartTableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/TablePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="110">
+          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FormPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="94" column="41" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/PartTableListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+          <folding>
+            <element signature="e#7473#7474#0" expanded="true" />
+            <element signature="e#7506#7507#0" expanded="true" />
+            <marker date="1469384942000" expanded="true" signature="1508:1536" ph="DELETE FROM " />
+            <marker date="1469384942000" expanded="true" signature="1822:1868" ph="Select count... " />
+            <marker date="1469384942000" expanded="true" signature="1971:2206" ph="insert into parts... " />
+            <marker date="1469384942000" expanded="true" signature="2310:2527" ph="update parts... " />
+            <marker date="1469384942000" expanded="true" signature="5669:5875" ph="SELECT id, p... parts" />
+          </folding>
         </state>
       </provider>
     </entry>

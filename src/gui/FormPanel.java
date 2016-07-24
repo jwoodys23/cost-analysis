@@ -86,6 +86,15 @@ public class FormPanel extends JPanel {
                 formListener.formEventOccurred(ev);
             }
 
+            partNameField.setText(null);
+            partNumberField.setText(null);
+            materialCostField.setText(null);
+            stdMaterialCostField.setText(null);
+            laborCostField.setText(null);
+            stdLaborCostField.setText(null);
+            freightCostField.setText(null);
+
+
         });
 
 

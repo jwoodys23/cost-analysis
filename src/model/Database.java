@@ -59,6 +59,18 @@ public class Database {
         }
     }
 
+    public void deletePart(int row) throws SQLException{
+
+        String deleteSql = "DELETE FROM parts WHERE id=?";
+        PreparedStatement deleteStmt = con.prepareStatement(deleteSql);
+        deleteStmt.setInt(1, row);
+        System.out.println("Deleting part with id: " + row);
+
+        deleteStmt.execute();
+
+
+    }
+
 
 
 
@@ -192,6 +204,8 @@ public class Database {
     public void removePart(int row){
         parts.remove(row);
     }
+
+
 
     public List<Part> getPart(){
         return Collections.unmodifiableList(parts);

@@ -78,6 +78,10 @@ public class Controller {
         db.removePart(index);
     }
 
+    public void deletePart(int index) throws SQLException{
+        db.deletePart(index);
+    }
+
     public void saveToFile(File file) throws IOException{
         db.saveToFile(file);
     }

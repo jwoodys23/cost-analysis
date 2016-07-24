@@ -42,10 +42,13 @@ public class TablePanel extends JPanel {
 
         removeItem.addActionListener(e -> {
             int row = table.getSelectedRow();
+            int id = tableModel.getId(row);
 
             if (partTableListener != null){
                 partTableListener.rowDeleted(row);
+                partTableListener.deleteEventOccurred(id);
                 tableModel.fireTableRowsDeleted(row, row);
+                System.out.println(row);
             }
         });
 

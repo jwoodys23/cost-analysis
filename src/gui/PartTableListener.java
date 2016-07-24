@@ -5,4 +5,5 @@ package gui;
  */
 public interface PartTableListener {
     void rowDeleted(int row);
+    void deleteEventOccurred(int row);
 }
