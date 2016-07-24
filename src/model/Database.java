@@ -1,7 +1,5 @@
 package model;
 
-import org.apache.xpath.operations.Variable;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.sql.*;
@@ -12,16 +10,29 @@ import java.util.*;
  */
 public class Database {
     private List<Part> parts;
-    private Variables variables;
 
     //private double
     //private List<Variables> variables;
     private Connection con;
 
+    private int port;
+    private String user;
+    private String password;
+
+
+    public void configure(int port, String user, String password) throws Exception{
+        this.port = port;
+        this.user = user;
+        this.password = password;
+
+        if (con!=null){
+            disconnect();
+            connect();
+        }
+    }
+
     public Database(){
         parts = new LinkedList<>();
-        variables = new Variables();
-       // variables = new LinkedList<>();
     }
 
     public void connect() throws Exception {
@@ -33,8 +44,8 @@ public class Database {
             throw new Exception("Driver not found");
         }
 
-        String url = "jdbc:mysql://localhost:3306/swingtest?autoReconnect=true&useSSL=false";
-        con = DriverManager.getConnection(url, "root", "password");
+        String url = String.format("jdbc:mysql://localhost:%d/swingtest?autoReconnect=true&useSSL=false", port);
+        con = DriverManager.getConnection(url, user, password);
         System.out.println("Connected: " + con);
     }
 
@@ -48,67 +59,8 @@ public class Database {
         }
     }
 
-    public void saveVariable() throws SQLException{
-        String checkSql = "Select count(*) as count from variables where id=?";
 
-        PreparedStatement checkStmt = con.prepareStatement(checkSql);
 
-        String insertSql = "insert into variables (id, std_labor, actual_labor, overhead_rate, actual_overhead, actualFreight, price) values(?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement insertStmt = con.prepareStatement(insertSql);
-
-        String updateSql = "update variables set std_labor=?, actual_labor=?, overhead_rate=?, actual_overhead=?, actual_freight=?, price=? where id=?";
-        PreparedStatement updateStmt = con.prepareStatement(updateSql);
-
-        int id = 1;
-        BigDecimal stdLabor = getVariables().getStdLabor();
-        BigDecimal actLabor = variables.getActualLabor();
-        BigDecimal overheadRate = variables.getOverheadRate();
-        BigDecimal actOverhead = variables.getActOverhead();
-        BigDecimal actualFreight = variables.getActualFreight();
-        BigDecimal price = variables.getPrice();
-        System.out.println(stdLabor);
-        System.out.println(actLabor);
-
-        checkStmt.setInt(1,id);
-        ResultSet checkResult = checkStmt.executeQuery();
-        checkResult.next();
-        int count = checkResult.getInt(1);
-
-        if (count == 0){
-
-            System.out.println("Inserting variables");
-            int col = 1;
-            insertStmt.setInt(col++, id);
-            insertStmt.setBigDecimal(col++, stdLabor);
-            insertStmt.setBigDecimal(col++, actLabor);
-            insertStmt.setBigDecimal(col++, overheadRate);
-            insertStmt.setBigDecimal(col++, actOverhead);
-            insertStmt.setBigDecimal(col++, actualFreight);
-            insertStmt.setBigDecimal(col++, price);
-
-            insertStmt.executeUpdate();
-
-        } else {
-            int col = 1;
-            updateStmt.setBigDecimal(col++, stdLabor);
-            updateStmt.setBigDecimal(col++, actLabor);
-            updateStmt.setBigDecimal(col++, overheadRate);
-            updateStmt.setBigDecimal(col++, actOverhead);
-            updateStmt.setBigDecimal(col++, actualFreight);
-            updateStmt.setBigDecimal(col++, price);
-            updateStmt.setInt(col++, id);
-
-            updateStmt.executeUpdate();
-
-            System.out.println("Updating variables");
-
-        }
-
-        updateStmt.close();
-        insertStmt.close();
-        checkStmt.close();
-
-    }
 
     public void save() throws SQLException{
 
@@ -116,10 +68,10 @@ public class Database {
 
         PreparedStatement checkStmt = con.prepareStatement(checkSql);
 
-        String insertSql = "insert into parts (id, part_name, part_number, material_cost, labor_cost, freight_cost) values(?, ?, ?, ?, ?, ?)";
+        String insertSql = "insert into parts (id, part_name, part_number, material_cost, labor_cost, freight_cost, stdMaterialCost, stdLaborCost, laborVariance, materialVariance, constant, totalActual, totalStandard) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement insertStmt = con.prepareStatement(insertSql);
 
-        String updateSql = "update parts set part_name=?, part_number=?, material_cost=?, labor_cost=?, freight_cost=? where id=?";
+        String updateSql = "update parts set part_name=?, part_number=?, material_cost=?, labor_cost=?, freight_cost=?, stdMaterialCost=?, stdLaborCost=?, laborVariance=?, materialVariance=?, constant=?, totalActual=?, totalStandard=? where id=?";
         PreparedStatement updateStmt = con.prepareStatement(updateSql);
 
 
@@ -128,8 +80,16 @@ public class Database {
             String name = part.getPartName();
             String number = part.getPartNumber();
             BigDecimal material = part.getMaterialCost();
-            BigDecimal labor = part.getLaborCost();
-            BigDecimal freight = part.getFreightCost();
+            BigDecimal labor = part.getActualLaborCost();
+            BigDecimal freight = part.getActualFreightCost();
+            BigDecimal stdMaterial = part.getStdMaterialCost();
+            BigDecimal stdLabor = part.getStdLaborCost();
+            BigDecimal laborVariance = part.getLaborVariance();
+            BigDecimal materialVariance = part.getMaterialVariance();
+            String constant = part.getConstant();
+            BigDecimal totalActual = part.getTotalActual();
+            BigDecimal totalStandard = part.getTotalStandard();
+
 
             checkStmt.setInt(1, id);
             ResultSet checkResult = checkStmt.executeQuery();
@@ -144,6 +104,13 @@ public class Database {
                 insertStmt.setBigDecimal(col++, material);
                 insertStmt.setBigDecimal(col++, labor);
                 insertStmt.setBigDecimal(col++, freight);
+                insertStmt.setBigDecimal(col++, stdMaterial);
+                insertStmt.setBigDecimal(col++, stdLabor);
+                insertStmt.setBigDecimal(col++, laborVariance);
+                insertStmt.setBigDecimal(col++, materialVariance);
+                insertStmt.setString(col++, constant);
+                insertStmt.setBigDecimal(col++, totalActual);
+                insertStmt.setBigDecimal(col++, totalStandard);
 
                 insertStmt.executeUpdate();
 
@@ -156,6 +123,13 @@ public class Database {
                 updateStmt.setBigDecimal(col++, material);
                 updateStmt.setBigDecimal(col++, labor);
                 updateStmt.setBigDecimal(col++, freight);
+                updateStmt.setBigDecimal(col++, stdMaterial);
+                updateStmt.setBigDecimal(col++, stdLabor);
+                updateStmt.setBigDecimal(col++, laborVariance);
+                updateStmt.setBigDecimal(col++, materialVariance);
+                updateStmt.setString(col++, constant);
+                updateStmt.setBigDecimal(col++, totalActual);
+                updateStmt.setBigDecimal(col++, totalStandard);
                 updateStmt.setInt(col++, id);
 
                 updateStmt.executeUpdate();
@@ -172,7 +146,7 @@ public class Database {
         parts.clear();
 
         Statement selectStmt = con.createStatement();
-        String sql = "SELECT id, part_name, part_number, material_cost, labor_cost, freight_cost FROM parts ORDER BY part_name";
+        String sql = "SELECT id, part_name, part_number, material_cost, labor_cost, freight_cost, stdMaterialCost, stdLaborCost, laborVariance, materialVariance, constant, totalActual, totalStandard FROM parts ORDER BY part_name";
         ResultSet results = selectStmt.executeQuery(sql);
 
         while (results.next()){
@@ -182,8 +156,16 @@ public class Database {
             BigDecimal material = results.getBigDecimal("material_cost");
             BigDecimal labor = results.getBigDecimal("labor_cost");
             BigDecimal freight = results.getBigDecimal("freight_cost");
+            BigDecimal stdMaterial = results.getBigDecimal("stdMaterialCost");
+            BigDecimal stdLabor = results.getBigDecimal("stdLaborCost");
+            BigDecimal laborVariance = results.getBigDecimal("laborVariance");
+            BigDecimal materialVariance = results.getBigDecimal("materialVariance");
+            String constant = results.getString("constant");
+            BigDecimal totalActual = results.getBigDecimal("totalActual");
+            BigDecimal totalStandard = results.getBigDecimal("totalStandard");
 
-            Part part = new Part(id, name, number, material, labor, freight);
+
+            Part part = new Part(id, name, number, material, stdMaterial,labor, stdLabor, freight, laborVariance, materialVariance, constant, totalActual, totalStandard);
 
             parts.add(part);
 
@@ -201,14 +183,9 @@ public class Database {
     }
 
     public void addVariable(BigDecimal stdLabor, BigDecimal actualLabor, BigDecimal overheadRate, BigDecimal actOverhead, BigDecimal actualFreight, BigDecimal price){
-        new Variables(stdLabor, actualLabor, overheadRate, actOverhead, actualFreight, price);
-        variables.setStdLabor(stdLabor);
-        variables.setActualLabor(actualLabor);
-        variables.setOverheadRate(overheadRate);
-        variables.setActOverhead(actOverhead);
-        variables.setActualFreight(actualFreight);
-        variables.setPrice(price);
+
     }
+
 
 
 
@@ -220,9 +197,6 @@ public class Database {
         return Collections.unmodifiableList(parts);
     }
 
-    public Variables getVariables(){
-        return variables;
-    }
 
 
     public void saveToFile (File file) throws IOException{

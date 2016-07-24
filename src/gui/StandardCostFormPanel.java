@@ -5,17 +5,18 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.math.BigDecimal;
+import java.awt.geom.Arc2D;
 
 /**
  * Created by jourdanwoodrich on 7/16/16.
  */
-public class SettingPanel extends JPanel {
+public class StandardCostFormPanel extends JPanel {
 
 
     /////Variables with values that update when form changes
     private JLabel stdLaborHrs;
     private JLabel actualLaborHrs;
+    private JLabel stdLaborCalculation;
     private JLabel stdOverheadRate;
     private JLabel overheadExpense;
     private JLabel actualFreightCost;
@@ -23,7 +24,8 @@ public class SettingPanel extends JPanel {
 
     /////////Actual Labels///////////
     private JLabel stdLaborHrsLabel;
-    private JLabel actualLaborHrsLabel;
+    private JLabel stdLaborRate;
+    private JLabel stdLaborCalculationLabel;
     private JLabel overheadRateLabel;
     private JLabel overheadExpenseLabel;
     private JLabel freightCostLabel;
@@ -31,11 +33,13 @@ public class SettingPanel extends JPanel {
 
 
 
-    public SettingPanel(){
+    public StandardCostFormPanel(){
 
         stdLaborHrsLabel = new JLabel("Standard Labor Hours: ");
         stdLaborHrs = new JLabel("$0.00");
-        actualLaborHrsLabel = new JLabel("Actual Labor Hours: ");
+        stdLaborRate = new JLabel("Standard Labor Rate: ");
+        stdLaborCalculationLabel = new JLabel("Labor Calculation: ");
+        stdLaborCalculation = new JLabel("$0.00");
         actualLaborHrs = new JLabel("$0.00");
         stdOverheadRate = new JLabel("$0.00");
         overheadRateLabel = new JLabel("Standard Overhead Rate: ");
@@ -80,12 +84,25 @@ public class SettingPanel extends JPanel {
         gc.fill = GridBagConstraints.NONE;
         gc.anchor = GridBagConstraints.LINE_END;
         gc.insets = new Insets(0,0,0,5);
-        add(actualLaborHrsLabel, gc);
+        add(stdLaborRate, gc);
 
         gc.gridx++;
         gc.anchor = GridBagConstraints.LINE_START;
         gc.insets = new Insets(0,0,0,0);
         add(actualLaborHrs,gc);
+
+        //////// NEXT ROW /////////////
+        gc.gridx = 0;
+        gc.gridy++;
+        gc.fill = GridBagConstraints.NONE;
+        gc.anchor = GridBagConstraints.LINE_END;
+        gc.insets = new Insets(0,0,0,5);
+        add(stdLaborCalculationLabel, gc);
+
+        gc.gridx++;
+        gc.anchor = GridBagConstraints.LINE_START;
+        gc.insets = new Insets(0,0,0,0);
+        add(stdLaborCalculation,gc);
 
         //////// NEXT ROW /////////////
         gc.gridx = 0;
@@ -151,12 +168,15 @@ public class SettingPanel extends JPanel {
         String actualFreight = e.getActFreight();
         String price = e.getPrice();
 
+        Double calculation = Double.parseDouble(actualLabor) * Double.parseDouble(stdLabor);
+
 
 
 
         stdLaborHrs.setText("$" + stdLabor);
         actualLaborHrs.setText("$" + actualLabor);
         stdOverheadRate.setText("$" + overheadRate);
+        stdLaborCalculation.setText("$" + calculation);
         overheadExpense.setText("$" + actOverhead);
         actualFreightCost.setText("$" + actualFreight);
         sellingPrice.setText("$" + price);

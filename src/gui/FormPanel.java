@@ -12,19 +12,22 @@ public class FormPanel extends JPanel {
 
     private JLabel partNameLabel;
     private JLabel partNumberLabel;
-    private JLabel materialCostLabel;
-    private JLabel laborCostLabel;
+    private JLabel actualMaterialCostLabel;
+    private JLabel stdMaterialCostLabel;
+    private JLabel actualLaborCostLabel;
+    private JLabel stdLaborCostLabel;
     private JLabel freightCostLabel;
+
 
     private JTextField partNameField;
     private JTextField partNumberField;
     private JTextField materialCostField;
+    private JTextField stdMaterialCostField;
     private JTextField laborCostField;
+    private JTextField stdLaborCostField;
     private JTextField freightCostField;
-    private JCheckBox customFreight;
     private JButton okBtn;
     private FormListener formListener;
-    private BigDecimal freightCost;
 
 
     public FormPanel() {
@@ -35,51 +38,50 @@ public class FormPanel extends JPanel {
         //Labels
         partNameLabel = new JLabel("Part name: ");
         partNumberLabel = new JLabel("Part Number: ");
-        materialCostLabel = new JLabel("Material Cost:");
-        laborCostLabel = new JLabel("Labor Cost: ");
+        actualMaterialCostLabel = new JLabel("Actual Material Cost: ");
+        stdMaterialCostLabel = new JLabel("Std Material Cost: ");
+        actualLaborCostLabel = new JLabel("Actual Labor Cost: ");
+        stdLaborCostLabel = new JLabel("Std Labor Cost: ");
         freightCostLabel = new JLabel("Freight Cost: ");
 
         //Fields
         partNameField = new JTextField(10);
         partNumberField = new JTextField(10);
         materialCostField = new JTextField(10);
+        stdMaterialCostField = new JTextField(10);
         laborCostField = new JTextField(10);
+        stdLaborCostField = new JTextField(10);
         freightCostField = new JTextField(10);
 
         // Buttons
         okBtn = new JButton("Add Part");
 
-        customFreight = new JCheckBox();
-
-        // Set up freight checkbox
-        freightCostLabel.setEnabled(false);
-        freightCostField.setEnabled(false);
-
-        customFreight.addActionListener(e -> {
-            boolean isTicked = customFreight.isSelected();
-            freightCostLabel.setEnabled(isTicked);
-            freightCostField.setEnabled(isTicked);
-        });
 
         okBtn.addActionListener(e -> {
             String partName = partNameField.getText();
             String partNumber = partNumberField.getText();
             String matCostField = materialCostField.getText();
+            String stdMatCostField = stdMaterialCostField.getText();
             String labCostField = laborCostField.getText();
+            String stdLabCostField = stdLaborCostField.getText();
             String freightCostFieldValue = freightCostField.getText();
-            System.out.println(freightCostLabel.isEnabled());
 
             //TODO: make material cost field accept empty value (Just add if statement )
             BigDecimal materialCost =  new BigDecimal(matCostField.replaceAll("[^.\\d]", ""));
+            BigDecimal stdMat = new BigDecimal(stdMatCostField.replaceAll("[^.\\d]", ""));
+            BigDecimal stdLab = new BigDecimal(stdLabCostField.replaceAll("[^.\\d]", ""));
             BigDecimal laborCost = new BigDecimal(labCostField.replaceAll("[^.\\d]", ""));
-            if (freightCostLabel.isEnabled()){
-                freightCost = new BigDecimal(freightCostFieldValue.replaceAll("[^.\\d]", ""));
-            } else {
-                freightCost = BigDecimal.valueOf(0.00);
-            }
+            BigDecimal freightCost = new BigDecimal(freightCostFieldValue.replaceAll("[^.\\d]", ""));
+
+            BigDecimal laborVariance = laborCost.subtract(stdLab);
+            BigDecimal materialVariance = materialCost.subtract(stdMat);
+            String constant = "Variance";
+            BigDecimal totalActual = materialCost.add(laborCost).add(freightCost);
+            BigDecimal totalStandard = stdLab.add(stdLab).add(freightCost);
 
 
-            FormEvent ev = new FormEvent(this, partName, partNumber,materialCost,laborCost,freightCost);
+
+            FormEvent ev = new FormEvent(this, partName, partNumber,materialCost,stdMat, laborCost, stdLab, freightCost, laborVariance, materialVariance, constant, totalActual, totalStandard);
             if (formListener!=null){
                 formListener.formEventOccurred(ev);
             }
@@ -137,7 +139,7 @@ public class FormPanel extends JPanel {
         gc.gridy = 2;
         gc.anchor = GridBagConstraints.LINE_END;
         gc.insets = new Insets(0,0,0,5);
-        add(materialCostLabel,gc);
+        add(actualMaterialCostLabel,gc);
 
         gc.gridx = 1;
         gc.gridy = 2;
@@ -145,50 +147,77 @@ public class FormPanel extends JPanel {
         gc.insets = new Insets(0,0,0,0);
         add(materialCostField, gc);
 
+        //Next Row///
+
+        gc.weightx = 1;
+        gc.weighty = 0.2;
+        gc.gridx = 0;
+        gc.gridy++;
+        gc.anchor = GridBagConstraints.LINE_END;
+        gc.insets = new Insets(0,0,0,5);
+        add(stdMaterialCostLabel,gc);
+
+        gc.gridx = 1;
+        gc.anchor = GridBagConstraints.LINE_START;
+        gc.insets = new Insets(0,0,0,0);
+        add(stdMaterialCostField, gc);
+
         //////// FOURTH ROW /////////////
 
         gc.weightx = 1;
         gc.weighty = 0.2;
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy++;
         gc.anchor = GridBagConstraints.LINE_END;
         gc.insets = new Insets(0,0,0,5);
-        add(laborCostLabel,gc);
+        add(actualLaborCostLabel,gc);
 
         gc.gridx = 1;
-        gc.gridy = 3;
         gc.anchor = GridBagConstraints.LINE_START;
         gc.insets = new Insets(0,0,0,0);
         add(laborCostField, gc);
+
+        //Next Row///
+
+        gc.weightx = 1;
+        gc.weighty = 0.2;
+        gc.gridx = 0;
+        gc.gridy++;
+        gc.anchor = GridBagConstraints.LINE_END;
+        gc.insets = new Insets(0,0,0,5);
+        add(stdLaborCostLabel,gc);
+
+        gc.gridx = 1;
+        gc.anchor = GridBagConstraints.LINE_START;
+        gc.insets = new Insets(0,0,0,0);
+        add(stdLaborCostField, gc);
 
         //////// FIFTH ROW /////////////
 
         gc.weightx = 1;
         gc.weighty = 0.2;
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy++;
         gc.anchor = GridBagConstraints.LINE_END;
         gc.insets = new Insets(0,0,0,5);
-        add(new JLabel("Custom Freight:"),gc);
+        add(freightCostLabel,gc);
 
         gc.gridx = 1;
-        gc.gridy = 4;
         gc.anchor = GridBagConstraints.LINE_START;
         gc.insets = new Insets(0,0,0,0);
-        add(customFreight, gc);
+        add(freightCostField, gc);
 
         //////// SIXTH ROW /////////////
 
         gc.weightx = 1;
         gc.weighty = 0.2;
         gc.gridx = 0;
-        gc.gridy = 5;
+        gc.gridy++;
         gc.anchor = GridBagConstraints.LINE_END;
         gc.insets = new Insets(0,0,0,5);
         add(freightCostLabel,gc);
 
         gc.gridx = 1;
-        gc.gridy = 5;
         gc.anchor = GridBagConstraints.LINE_START;
         gc.insets = new Insets(0,0,0,0);
         add(freightCostField, gc);
@@ -198,7 +227,7 @@ public class FormPanel extends JPanel {
         gc.weightx = 1;
         gc.weighty = 2.0;
         gc.gridx = 1;
-        gc.gridy = 6;
+        gc.gridy++;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0,0,0,0);
         add(okBtn, gc);

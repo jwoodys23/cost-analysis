@@ -1,7 +1,6 @@
 package gui;
 
 import controller.Controller;
-import model.Variables;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -16,7 +15,7 @@ import java.util.prefs.Preferences;
  */
 public class MainFrame extends JFrame {
 
-    private SettingPanel settingPanel;
+    private StandardCostFormPanel standardCostFormPanel;
     private SettingForm settingForm;
     private ToolBar toolBar;
     private FormPanel formPanel;
@@ -26,6 +25,7 @@ public class MainFrame extends JFrame {
     private PrefsDialog prefsDialog;
     private Preferences prefs;
     private JTabbedPane tabbedPane;
+    private StandardTablePanel stdCostTablePanel;
 
 
     public MainFrame(){
@@ -34,20 +34,21 @@ public class MainFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        settingPanel = new SettingPanel();
+        standardCostFormPanel = new StandardCostFormPanel();
         settingForm = new SettingForm();
         toolBar = new ToolBar();
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
+        stdCostTablePanel = new StandardTablePanel();
         tabbedPane = new JTabbedPane();
         tablePanel.setName("Parts Database");
-        settingPanel.setName("Settings");
+        standardCostFormPanel.setName("Settings");
         formPanel.setName("Form");
 
         tabbedPane.addTab("Parts Database", tablePanel);
-        tabbedPane.addTab("Settings", settingPanel);
+        tabbedPane.addTab("Standard Costs", stdCostTablePanel);
 
-        tabbedPane.addChangeListener(e -> tabChanged());
+       // tabbedPane.addChangeListener(e -> tabChanged());
 
 
 
@@ -57,22 +58,40 @@ public class MainFrame extends JFrame {
 
         prefsDialog = new PrefsDialog(this);
 
+        stdCostTablePanel.setData(controller.getPart());
+
         tablePanel.setData(controller.getPart());
 
         tablePanel.setPartTableListener(row -> controller.removePart(row));
 
 
         prefsDialog.setPrefsListener((user, password, port) -> {
-            prefs.put("user", user);
+            prefs.put("root", user);
             prefs.put("password", password);
             prefs.putInt("port", port);
+
+            try{
+                controller.configure(port, user, password);
+
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(MainFrame.this, "Unable to reconnect to the database");
+            }
+
         });
 
         String user = prefs.get("user", "");
         String password = prefs.get("password", "");
         Integer port = prefs.getInt("port", 3306);
 
+
+
         prefsDialog.setDefault(user, password, port);
+
+        try{
+            controller.configure(port, user, password);
+        }catch (Exception e){
+            System.err.println("Cant connect to database");
+        }
 
         fileChooser = new JFileChooser();
 
@@ -107,19 +126,21 @@ public class MainFrame extends JFrame {
 
                 }
                 tablePanel.refresh();
+                stdCostTablePanel.refresh();
             }
         });
 
         formPanel.setFormListener(e -> {
             controller.addPart(e);
             tablePanel.refresh();
+            stdCostTablePanel.refresh();
 
         });
 
 
         settingForm.setSettingListener(e ->{
             controller.addVariable(e);
-            settingPanel.getVariable(e);
+            standardCostFormPanel.getVariable(e);
 
         });
 
@@ -134,7 +155,8 @@ public class MainFrame extends JFrame {
         });
 
         //add(selectTab(), BorderLayout.WEST);
-        tabChanged();
+       // tabChanged();
+        add(formPanel,BorderLayout.WEST);
         add(toolBar, BorderLayout.PAGE_START);
         add(tabbedPane, BorderLayout.CENTER);
 
@@ -213,6 +235,8 @@ public class MainFrame extends JFrame {
         prefs.addActionListener(e ->
             prefsDialog.setVisible(true)
         );
+
+
 
 
         showFormItem.addActionListener(e -> {

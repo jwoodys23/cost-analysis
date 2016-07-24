@@ -1,13 +1,10 @@
 package gui;
 
 import controller.Controller;
-import model.Variables;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.geom.Arc2D;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 
 /**
@@ -44,7 +41,7 @@ public class SettingForm extends JPanel {
 
         //Labels
         stdLaborHrs = new JLabel("Standard Labor Hours");
-        actualLaborHrs = new JLabel("Actual Labor Hours");
+        actualLaborHrs = new JLabel("Standard Labor Rate");
         stdOverheadRate = new JLabel("Standard Overhead Rate");
         actualOverhead = new JLabel("Actual Overhead Expense");
         actualFreight = new JLabel("Actual Freight Expense");
@@ -179,7 +176,7 @@ public class SettingForm extends JPanel {
 
         saveBtn.addActionListener(e ->{
 
-            //TODO: make all these fields accept empty value(Just add if statements to all)
+//            TODO: make all these fields accept empty value(Just add if statements to all)
             String stdLabor = stdLaborHrsInput.getText();
             String actualLabor = actualLaborHrsInput.getText();
             String overheadRate = overheadRateInput.getText();
@@ -190,22 +187,22 @@ public class SettingForm extends JPanel {
 
             SettingEvent ev = new SettingEvent(this, stdLabor, actualLabor, overheadRate, actOverhead, actFreight, price);
 
-            System.out.println(controller.getVariables());
-            if (settingListener!=null){
-                settingListener.settingEventOccurred(ev);
-                controller.addVariable(ev);
-                try {
-                    controller.connect();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-                try {
-                    controller.saveVariable();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-//                System.out.println(controller.getVariables());
-            }
+//            if (settingListener!=null){
+//                settingListener.settingEventOccurred(ev);
+//                controller.addVariable(ev);
+//                try {
+//                    controller.connect();
+//                } catch (Exception e1) {
+//                    e1.printStackTrace();
+//                }
+//
+//                try {
+//                    controller.saveVariable();
+//                } catch (SQLException e1) {
+//                    e1.printStackTrace();
+//                }
+//
+//            }
 
 
 

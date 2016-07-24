@@ -4,7 +4,6 @@ import gui.FormEvent;
 import gui.SettingEvent;
 import model.Database;
 import model.Part;
-import model.Variables;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,18 +15,19 @@ import java.util.List;
  * Created by jourdanwoodrich on 6/21/16.
  */
 public class Controller {
-   // private Variables variables;
+
 
     Database db = new Database();
-    //VariancePanel variancePanel = new VariancePanel();
 
 
     public List<Part> getPart(){
         return db.getPart();
     }
 
-    public Variables getVariables(){
-        return db.getVariables();
+
+
+    public void configure(int port, String user, String password) throws Exception{
+        db.configure(port, user, password);
     }
 
 
@@ -53,10 +53,6 @@ public class Controller {
         //System.out.println(variables.getActOverhead());
     }
 
-    public void getLabor(){
-
-    }
-
 
     public void addPart(FormEvent e){
         String partName = e.getPartName();
@@ -64,8 +60,17 @@ public class Controller {
         BigDecimal materialCost = e.getMaterialCost();
         BigDecimal laborCost = e.getLaborCost();
         BigDecimal freightCost = e.getFreightCost();
+        BigDecimal stdMaterialCost = e.getStdMaterialCost();
+        BigDecimal stdLaborCost = e.getStdLaborCost();
+        BigDecimal laborVariance = e.getLaborVariance();
+        BigDecimal materialVariance = e.getMaterialVariance();
+        String constant = e.getConstant();
+        BigDecimal totalActual = e.getTotalActual();
+        BigDecimal totalStandard = e.getTotalStandard();
 
-        Part part = new Part(partName,partNumber,materialCost,laborCost,freightCost);
+
+
+        Part part = new Part(partName,partNumber,materialCost, stdMaterialCost, laborCost, stdLaborCost, freightCost, laborVariance, materialVariance, constant, totalActual, totalStandard);
         db.addPart(part);
 
     }
@@ -81,9 +86,6 @@ public class Controller {
         db.loadFromFile(file);
     }
 
-    public void saveVariable() throws SQLException{
-        db.saveVariable();
-    }
 
     public void save() throws SQLException {
         db.save();

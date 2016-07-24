@@ -13,23 +13,124 @@ public class Part implements Serializable{
     private int id;
     private String partName;
     private String partNumber;
-    private BigDecimal materialCost;
-    private BigDecimal laborCost;
-    private BigDecimal freightCost;
+    private BigDecimal actualMaterialCost;
+    private BigDecimal stdMaterialCost;
+    private BigDecimal actualLaborCost;
+    private BigDecimal stdLaborCost;
+    private BigDecimal actualFreightCost;
+    private BigDecimal stdFreightCost;
+    private BigDecimal laborVariance;
+    private BigDecimal materialVariance;
+    private String constant;
+    private BigDecimal totalActual;
+    private BigDecimal totalStandard;
 
-    public Part (String partName, String partNumber, BigDecimal materialCost, BigDecimal laborCost, BigDecimal freightCost){
+
+    public Part (String partName, String partNumber, BigDecimal actualMaterialCost, BigDecimal actualLaborCost, BigDecimal actualFreightCost){
         this.partName = partName;
         this.partNumber = partNumber;
-        this.materialCost = materialCost;
-        this.laborCost = laborCost;
-        this.freightCost = freightCost;
+        this.actualMaterialCost = actualMaterialCost;
+        this.actualLaborCost = actualLaborCost;
+        this.actualFreightCost = actualFreightCost;
         this.id = count;
         count++;
     }
 
-    public Part (int id, String partName, String partNumber, BigDecimal materialCost, BigDecimal laborCost, BigDecimal freightCost){
-        this(partName, partNumber, materialCost, laborCost, freightCost);
+    public Part (String partName, String partNumber, BigDecimal actualMaterialCost, BigDecimal stdMaterialCost, BigDecimal actualLaborCost, BigDecimal stdLaborCost, BigDecimal actualFreightCost){
+        this(partName, partNumber, actualMaterialCost, actualLaborCost, actualFreightCost);
+        this.stdMaterialCost = stdMaterialCost;
+        this.stdLaborCost = stdLaborCost;
+    }
+
+    public Part (int id, String partName, String partNumber, BigDecimal actualMaterialCost, BigDecimal stdMaterialCost, BigDecimal actualLaborCost, BigDecimal stdLaborCost, BigDecimal actualFreightCost, BigDecimal laborVariance, BigDecimal materialVariance, String constant, BigDecimal totalActual, BigDecimal totalStandard){
+        this(partName, partNumber, actualMaterialCost, stdMaterialCost, actualLaborCost, stdLaborCost, actualFreightCost);
         this.id = id;
+        this.materialVariance = materialVariance;
+        this.laborVariance = laborVariance;
+        this.constant = constant;
+        this.totalActual = totalActual;
+        this.totalStandard = totalStandard;
+    }
+
+    public Part (String partName, String partNumber, BigDecimal actualMaterialCost, BigDecimal stdMaterialCost, BigDecimal actualLaborCost, BigDecimal stdLaborCost, BigDecimal actualFreightCost, BigDecimal laborVariance, BigDecimal materialVariance, String constant, BigDecimal totalActual, BigDecimal totalStandard){
+        this(partName, partNumber, actualMaterialCost, stdMaterialCost, actualLaborCost, stdLaborCost, actualFreightCost);
+        this.materialVariance = materialVariance;
+        this.laborVariance = laborVariance;
+        this.constant = constant;
+        this.totalActual = totalActual;
+        this.totalStandard = totalStandard;
+    }
+
+    public BigDecimal getLaborVariance() {
+        return laborVariance;
+    }
+
+    public void setLaborVariance(BigDecimal laborVariance) {
+        this.laborVariance = laborVariance;
+    }
+
+    public BigDecimal getMaterialVariance() {
+        return materialVariance;
+    }
+
+    public void setMaterialVariance(BigDecimal materialVariance) {
+        this.materialVariance = materialVariance;
+    }
+
+    public String getConstant() {
+        return constant;
+    }
+
+    public void setConstant(String constant) {
+        this.constant = constant;
+    }
+
+    public BigDecimal getTotalActual() {
+        return totalActual;
+    }
+
+    public void setTotalActual(BigDecimal totalActual) {
+        this.totalActual = totalActual;
+    }
+
+    public BigDecimal getTotalStandard() {
+        return totalStandard;
+    }
+
+    public void setTotalStandard(BigDecimal totalStandard) {
+        this.totalStandard = totalStandard;
+    }
+
+    public BigDecimal getActualMaterialCost() {
+        return actualMaterialCost;
+    }
+
+    public void setActualMaterialCost(BigDecimal actualMaterialCost) {
+        this.actualMaterialCost = actualMaterialCost;
+    }
+
+    public BigDecimal getStdMaterialCost() {
+        return stdMaterialCost;
+    }
+
+    public void setStdMaterialCost(BigDecimal stdMaterialCost) {
+        this.stdMaterialCost = stdMaterialCost;
+    }
+
+    public BigDecimal getStdLaborCost() {
+        return stdLaborCost;
+    }
+
+    public void setStdLaborCost(BigDecimal stdLaborCost) {
+        this.stdLaborCost = stdLaborCost;
+    }
+
+    public BigDecimal getStdFreightCost() {
+        return stdFreightCost;
+    }
+
+    public void setStdFreightCost(BigDecimal stdFreightCost) {
+        this.stdFreightCost = stdFreightCost;
     }
 
     public int getId() {
@@ -57,30 +158,30 @@ public class Part implements Serializable{
     }
 
     public BigDecimal getMaterialCost() {
-        return materialCost;
+        return actualMaterialCost;
     }
 
     public void setMaterialCost(BigDecimal materialCost) {
-        this.materialCost = materialCost;
+        this.actualMaterialCost = materialCost;
     }
 
-    public BigDecimal getLaborCost() {
-        return laborCost;
+    public BigDecimal getActualLaborCost() {
+        return actualLaborCost;
     }
 
-    public void setLaborCost(BigDecimal laborCost) {
-        this.laborCost = laborCost;
+    public void setActualLaborCost(BigDecimal actualLaborCost) {
+        this.actualLaborCost = actualLaborCost;
     }
 
-    public BigDecimal getFreightCost() {
-        return freightCost;
+    public BigDecimal getActualFreightCost() {
+        return actualFreightCost;
     }
 
     public String toString(){
         return id + " " + partName;
     }
 
-    public void setFreightCost(BigDecimal freightCost) {
-        this.freightCost = freightCost;
+    public void setActualFreightCost(BigDecimal actualFreightCost) {
+        this.actualFreightCost = actualFreightCost;
     }
 }
