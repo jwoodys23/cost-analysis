@@ -7,6 +7,8 @@ Pull or clone repository. App is ran from App.java
 
 default username is "root", default password is "password" and default port is 3,306. These database settings can be changed under Window -> View -> Prefrences... in the file menu.
 
+A sample mysql database is provided with the file name costDatabase.sql. One way to set it up is to import the file with MySql Workbench but there are other solutions.
+
 #Saving to database
 Press the save button on the toolbar. mySql database must be configured and running.
 
@@ -29,7 +31,7 @@ File -> save in the file menu. Must be saved as a .inv type.
 File -> open in the file menu. Must select file of .inv type.
 
 #Viewing Report
-Window -> view -> report in the file menu. Displays total part listing as well as graphs between the total material variance for each part, the total labor variance for each part as well as the total part variance with the sum of material costs, labor costs and freight costs 
+Window -> view -> report in the file menu. Displays total part listing as well as graphs between the total material variance for each part, the total labor variance for each part as well as the total part variance with the sum of material costs, labor costs and freight costs
 
 
 
