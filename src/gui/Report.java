@@ -1,6 +1,6 @@
 package gui;
 
-import javafx.scene.chart.BarChart;
+import net.sf.dynamicreports.examples.Templates;
 import net.sf.dynamicreports.report.builder.chart.Bar3DChartBuilder;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
 import net.sf.dynamicreports.report.builder.datatype.BigDecimalType;
@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
 /**
@@ -98,11 +99,10 @@ public class Report {
                     .setSubtotalStyle(boldStyle)
                     .title(cmp.text("Variance Report").setStyle(titleStyle))
                     .columns(partName, partNumber, actMaterialColumn, stdmaterialColumn, actLaborColumn, stdLaborColumn, freightCost, totalStandardColumn, totalActualColumn)
-
                     .subtotalsAtSummary(sbt.sum(actMaterialColumn), sbt.sum(stdmaterialColumn), sbt.sum(actLaborColumn), sbt.sum(stdLaborColumn), sbt.sum(freightCost), sbt.sum(totalStandardColumn), sbt.sum(totalActualColumn))
                     .pageFooter(cmp.pageXofY().setStyle(boldCenteredStyle))
                     .summary(cmp.horizontalList(materialChart, laborChart, totalVarianceChart))
-
+                    .noData(Templates.createTitleComponent("NoData"), cmp.text("There is no data or you are not connected to a SQL database"))
                     .setDataSource("select * from parts", con)
                     .show(false);
         } catch (DRException e){
